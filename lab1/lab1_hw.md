@@ -1,7 +1,7 @@
 ---
 title: "Lab 1 Homework"
-author: "Please Add Your Name Here"
-date: "2024-01-10"
+author: "Elisabeth Sellinger"
+date: "2024-01-11"
 output:
   html_document: 
     theme: spacelab
@@ -14,10 +14,10 @@ Answer the following questions and complete the exercises in RMarkdown. Please e
 Make sure to use the formatting conventions of RMarkdown to make your report neat and clean!  
 
 **1. Please complete the [class survey](https://forms.gle/AHHXd3aobaAdkkFg9) if you have not already done so.**
+Done!
 
 **2. What is the difference between R and RStudio? What is GitHub and why is it useful to programmers?**  
-
-
+R is the base program which R-Studio requires to run. R-Studio is much more user friendly and has organizational components that make it easier to use. GitHub is a data platform which you can use to upload information and save on the internet. You can share this information with others to make your data accessible.
 
 **3. Navigate to my [BIS15L](https://github.com/jmledford3115/BIS15LW2021_jledford) repository on GitHub. Notice that near the bottom there is a nice, clean description of the repository. You want this on your repository! It is built by making edits to the `README.md` file using the RMarkdown conventions. Edit your repository's `README.md` file so that you have a clean informative description, including your email address. Be creative! You don't need to just copy mine. There are lots of examples online.**  
 
