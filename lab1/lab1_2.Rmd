@@ -61,9 +61,8 @@ Order of operations applies and you don't need to add an '=' sign.
 
 What is going on here? How do we adjust this expression so the output is 12?
 ```{r}
-4-2*6
+(4-2)*6
 ```
-
 
 Statistics are what R was originally written for and there are thousands of packages for specialized statistics depending on your needs.  
 
@@ -84,6 +83,27 @@ median(x)
 
 ```{r}
 sd(x)
+```
+
+## Replicate Above with New Numbers 
+## to make code chunk can use green c icon at top of script and select R or use "option" "command" "i"
+## arrow shortcut: "option" "-"
+## To remove variable in environment: rm()
+
+```{r}
+y <- c(1,8,9,4,3,2,6,7,8,9,0,2,3,5,6,7) 
+```
+
+```{r}
+mean(y)
+```
+
+```{r}
+median(x)
+```
+
+```{r}
+sd(y)
 ```
 
 ## RMarkdown  
@@ -107,7 +127,7 @@ Have a look at the format of this document; titles are indicated by a `#`. Large
 ## Links
 I often add links to my RMarkdown files. For a website, include the page name in `[]` and the website address in `()`. [BIS 15L Webpage](https://jmledford3115.github.io/datascibiol/).    
 
-Email is similar, but you need to include `mailto:` in the parentheses. Here is my email: [Joel Ledford](jmledford@ucdavis.edu).    
+Email is similar, but you need to include `mailto:` in the parentheses. Here is my email: [Joel Ledford](mailto:jmledford@ucdavis.edu).    
 
 ## Code Chunks
 All R code is inserted between two gray bars called a code chunk. You can insert a new code chunk by clicking "Insert>R" at the top of the page. On a Mac, the shortcut is `option+command+i`.  

@@ -1,0 +1,68 @@
+---
+title: "RMarkdown Practice"
+author: "Elisabeth Sellinger"
+date: "2024-01-11"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+1.
+## Math Practice
+
+```{r}
+1+1*12/3
+```
+
+```{r}
+y <- c(1,8,9,4,3,2,6,7,8,9,0,2,3,5,6,7) 
+```
+
+```{r}
+mean(y)
+```
+
+```{r}
+median(y)
+```
+
+```{r}
+sd(y)
+```
+
+2.
+## Control font size using #
+# Title
+## Title
+### Title
+#### Title
+
+## Create links
+[BIS 15L Webpage](https://jmledford3115.github.io/datascibiol/)
+
+## Create email links
+[Elisabeth Sellinger](mailto:ehsellinger@ucdavis.edu)
+
+## Create line breake using two spaces in between phrases
+make this the first line  
+and this the second line
+
+## Create code chunks using "option""command""i"
+```{r}
+
+```
+
+3.
+## Practice
+
+```{r}
+#install.packages("tidyverse")
+library("tidyverse")
+```
+
+```{r}
+ggplot(mtcars, aes(x = factor(cyl))) +
+    geom_bar()
+```
+
