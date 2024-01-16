@@ -20,6 +20,7 @@ Done!
 R is the base program which R-Studio requires to run. R-Studio is much more user friendly and has organizational components that make it easier to use. GitHub is a data platform which you can use to upload information and save on the internet. You can share this information with others to make your data accessible.
 
 **3. Navigate to my [BIS15L](https://github.com/jmledford3115/BIS15W2023_jledford) repository on GitHub. Notice that near the bottom there is a nice, clean description of the repository. You want this on your repository! It is built by making edits to the `README.md` file using the RMarkdown conventions. Edit your repository's `README.md` file so that you have a clean informative description, including your email address. Be creative! You don't need to just copy mine. There are lots of examples online.**  
+Done!
 
 **4. Calculate the following expressions. Be sure to include each one in a separate code chunk.**  
 ```{r}
