@@ -83,7 +83,7 @@ Deathly_Hallows_2 <- c(381.0, 960.5)
 Create a new object called `box_office`. Here we are using the `c` command to combine the vectors into one.
 ```{r}
 box_office <- c(Philosophers_Stone, Chamber_of_Secrets, Prisoner_of_Azkaban, Goblet_of_Fire, Order_of_the_Phoenix, Half_Blood_Prince, Deathly_Hallows_1, Deathly_Hallows_2)
-box_office # combines objects, bu they are no longer associated with their titles
+box_office # combines objects, but they are no longer associated with their titles
 ```
 
 Create `harry_potter_matrix` using the `matrix()` command. We need to tell R how to organize the `box_office` vector using the `nrow` and `byrow` commands.

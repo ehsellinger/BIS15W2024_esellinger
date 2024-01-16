@@ -13,7 +13,7 @@
 
 <meta name="date" content="2024-01-16" />
 
-<title>Lab 1 Homework</title>
+<title>Lab 2 Homework</title>
 
 <script>// Pandoc 2.9 adds attributes on both header and div. We remove the former (to
 // be compatible with the behavior of Pandoc < 2.8).
@@ -374,7 +374,7 @@ display: none;
 
 
 
-<h1 class="title toc-ignore">Lab 1 Homework</h1>
+<h1 class="title toc-ignore">Lab 2 Homework</h1>
 <h4 class="author">Elisabeth Sellinger</h4>
 <h4 class="date">2024-01-16</h4>
 
@@ -391,65 +391,123 @@ the included code chunks to run. Be sure to add your name to the author
 header above.</p>
 <p>Make sure to use the formatting conventions of RMarkdown to make your
 report neat and clean!</p>
-<p><strong>1. Please complete the <a href="https://forms.gle/AHHXd3aobaAdkkFg9">class survey</a> if you have
-not already done so.</strong><br />
-Done!</p>
-<p><strong>2. What is the difference between R and RStudio? What is
-GitHub and why is it useful to programmers?</strong><br />
-R is the base program which R-Studio requires to run. R-Studio is much
-more user friendly and has organizational components that make it easier
-to use and is called a GUI (graphical user interface). GitHub is a data
-platform which you can use to upload information and save on the
-internet. You can share this information with others to make your data
-accessible.</p>
-<p><strong>3. Navigate to my <a href="https://github.com/jmledford3115/BIS15W2023_jledford">BIS15L</a>
-repository on GitHub. Notice that near the bottom there is a nice, clean
-description of the repository. You want this on your repository! It is
-built by making edits to the <code>README.md</code> file using the
-RMarkdown conventions. Edit your repository’s <code>README.md</code>
-file so that you have a clean informative description, including your
-email address. Be creative! You don’t need to just copy mine. There are
-lots of examples online.</strong><br />
-Done!</p>
-<p><strong>4. Calculate the following expressions. Be sure to include
-each one in a separate code chunk.</strong></p>
-<pre class="r"><code>5 - 3 * 2  </code></pre>
-<pre><code>## [1] -1</code></pre>
-<pre class="r"><code>8 / 2 * 2 </code></pre>
-<pre><code>## [1] 8</code></pre>
-<p><strong>5. Did any of the results in #4 surprise you? Write two
-programs that calculate each expression such that the result for the
-first example is 4 and the second example is 2.</strong></p>
-<pre class="r"><code>(5 - 3) * 2 </code></pre>
-<pre><code>## [1] 4</code></pre>
-<pre class="r"><code>8 / (2 * 2)</code></pre>
-<pre><code>## [1] 2</code></pre>
-<p><strong>6. <code>Objects</code> in R are a way in which we can store
-data or operations. We will talk more about objects next week. For now,
-make a new object <code>pi</code> as 3.14159265359 by running the
-following code chunk. You should now see the object <code>pi</code> in
-the environment window in the top right.</strong></p>
-<pre class="r"><code>pi &lt;- 3.14159265359</code></pre>
-<p><strong>7. Let’s say we want to multiply <code>pi</code> by 2. Using
-the same arithmetic principles that we just learned, write a code chunk
-that performs this operation using the object we created.</strong></p>
-<pre class="r"><code>pi * 2</code></pre>
-<pre><code>## [1] 6.283185</code></pre>
-<p><strong>8. In order to get help with any command in R, just type a
-<code>?</code> in front the command of interest. Practice this by
-running the following code chunk.</strong></p>
-<pre class="r"><code>?mean</code></pre>
-<p><strong>9. Let’s calculate the mean for the numbers 2, 8, 6, 4, 9,
-10. I have built an object <code>x</code> for you below so all you need
-to do is run the first code chunk and then create a second code chunk
-that shows the calculation. Give it a try!</strong></p>
-<pre class="r"><code>x &lt;- c(2, 8, 6, 6, 7, 4, 9, 9, 9, 10)</code></pre>
-<pre class="r"><code>mean(x)</code></pre>
-<pre><code>## [1] 7</code></pre>
-<p><strong>10. Repeat the procedure above, but this time calculate the
-median.</strong></p>
-<pre class="r"><code>median(x)</code></pre>
-<pre><code>## [1] 7.5</code></pre>
+<ol style="list-style-type: decimal">
+<li><p>What is a vector in R?<br />
+A vector in R is a list of variables of the same data type that are
+combined in a string.</p></li>
+<li><p>What is a data matrix in R?<br />
+A data matrix is an arrangement of elements of the same data type
+organized into a fixed number of rows and columns. This is different
+from a data frame which can contain different types of data.</p></li>
+<li><p>Below are data collected by three scientists (Jill, Steve, Susan
+in order) measuring temperatures of eight hot springs. Run this code
+chunk to create the vectors.</p></li>
+</ol>
+<pre class="r"><code>spring_1 &lt;- c(36.25, 35.40, 35.30)
+spring_2 &lt;- c(35.15, 35.35, 33.35)
+spring_3 &lt;- c(30.70, 29.65, 29.20)
+spring_4 &lt;- c(39.70, 40.05, 38.65)
+spring_5 &lt;- c(31.85, 31.40, 29.30)
+spring_6 &lt;- c(30.20, 30.65, 29.75)
+spring_7 &lt;- c(32.90, 32.50, 32.80)
+spring_8 &lt;- c(36.80, 36.45, 33.15)</code></pre>
+<ol start="4" style="list-style-type: decimal">
+<li>Build a data matrix that has the springs as rows and the columns as
+scientists.</li>
+</ol>
+<pre class="r"><code>springs_data &lt;- c(spring_1,spring_2,spring_3,spring_4,spring_5,spring_6,spring_7,spring_8)
+springs_matrix &lt;- matrix(springs_data, nrow = 8, byrow = T)
+springs_matrix</code></pre>
+<pre><code>##       [,1]  [,2]  [,3]
+## [1,] 36.25 35.40 35.30
+## [2,] 35.15 35.35 33.35
+## [3,] 30.70 29.65 29.20
+## [4,] 39.70 40.05 38.65
+## [5,] 31.85 31.40 29.30
+## [6,] 30.20 30.65 29.75
+## [7,] 32.90 32.50 32.80
+## [8,] 36.80 36.45 33.15</code></pre>
+<pre class="r"><code>scientist_names &lt;- c(&quot;Jill&quot;, &quot;Steve&quot;, &quot;Susan&quot;)
+scientist_names</code></pre>
+<pre><code>## [1] &quot;Jill&quot;  &quot;Steve&quot; &quot;Susan&quot;</code></pre>
+<pre class="r"><code>colnames(springs_matrix) &lt;- scientist_names
+spring_names &lt;- c(&quot;spring_1&quot;,&quot;spring_2&quot;,&quot;spring_3&quot;,&quot;spring_4&quot;,&quot;spring_5&quot;,&quot;spring_6&quot;,&quot;spring_7&quot;,&quot;spring_8&quot;)
+spring_names</code></pre>
+<pre><code>## [1] &quot;spring_1&quot; &quot;spring_2&quot; &quot;spring_3&quot; &quot;spring_4&quot; &quot;spring_5&quot; &quot;spring_6&quot; &quot;spring_7&quot;
+## [8] &quot;spring_8&quot;</code></pre>
+<pre class="r"><code>row.names(springs_matrix) &lt;- spring_names
+springs_matrix</code></pre>
+<pre><code>##           Jill Steve Susan
+## spring_1 36.25 35.40 35.30
+## spring_2 35.15 35.35 33.35
+## spring_3 30.70 29.65 29.20
+## spring_4 39.70 40.05 38.65
+## spring_5 31.85 31.40 29.30
+## spring_6 30.20 30.65 29.75
+## spring_7 32.90 32.50 32.80
+## spring_8 36.80 36.45 33.15</code></pre>
+<ol start="5" style="list-style-type: decimal">
+<li>The names of the springs are 1.Bluebell Spring, 2.Opal Spring,
+3.Riverside Spring, 4.Too Hot Spring, 5.Mystery Spring, 6.Emerald
+Spring, 7.Black Spring, 8.Pearl Spring. Name the rows and columns in the
+data matrix. Start by making two new vectors with the names, then use
+<code>colnames()</code> and <code>rownames()</code> to name the columns
+and rows.</li>
+</ol>
+<pre class="r"><code>spring_names_2 &lt;- c(&quot;Bluebell Spring&quot;, &quot;Opal Spring&quot;, &quot;Riverside Spring&quot;, &quot;Too Hot Spring&quot;, &quot;Mystery Spring&quot;, &quot;Emerald Spring&quot;, &quot;Black Spring&quot;, &quot;Pearl Spring&quot;)
+spring_names_2</code></pre>
+<pre><code>## [1] &quot;Bluebell Spring&quot;  &quot;Opal Spring&quot;      &quot;Riverside Spring&quot; &quot;Too Hot Spring&quot;  
+## [5] &quot;Mystery Spring&quot;   &quot;Emerald Spring&quot;   &quot;Black Spring&quot;     &quot;Pearl Spring&quot;</code></pre>
+<pre class="r"><code>row.names(springs_matrix) &lt;- spring_names_2
+springs_matrix</code></pre>
+<pre><code>##                   Jill Steve Susan
+## Bluebell Spring  36.25 35.40 35.30
+## Opal Spring      35.15 35.35 33.35
+## Riverside Spring 30.70 29.65 29.20
+## Too Hot Spring   39.70 40.05 38.65
+## Mystery Spring   31.85 31.40 29.30
+## Emerald Spring   30.20 30.65 29.75
+## Black Spring     32.90 32.50 32.80
+## Pearl Spring     36.80 36.45 33.15</code></pre>
+<ol start="6" style="list-style-type: decimal">
+<li>Calculate the mean temperature of all eight springs.</li>
+</ol>
+<pre class="r"><code>Mean_Temps &lt;- rowMeans(springs_matrix)
+Mean_Temps</code></pre>
+<pre><code>##  Bluebell Spring      Opal Spring Riverside Spring   Too Hot Spring 
+##         35.65000         34.61667         29.85000         39.46667 
+##   Mystery Spring   Emerald Spring     Black Spring     Pearl Spring 
+##         30.85000         30.20000         32.73333         35.46667</code></pre>
+<ol start="7" style="list-style-type: decimal">
+<li>Add this as a new column in the data matrix.</li>
+</ol>
+<pre class="r"><code>springs_matrix &lt;- cbind(springs_matrix, Mean_Temps)
+springs_matrix</code></pre>
+<pre><code>##                   Jill Steve Susan Mean_Temps
+## Bluebell Spring  36.25 35.40 35.30   35.65000
+## Opal Spring      35.15 35.35 33.35   34.61667
+## Riverside Spring 30.70 29.65 29.20   29.85000
+## Too Hot Spring   39.70 40.05 38.65   39.46667
+## Mystery Spring   31.85 31.40 29.30   30.85000
+## Emerald Spring   30.20 30.65 29.75   30.20000
+## Black Spring     32.90 32.50 32.80   32.73333
+## Pearl Spring     36.80 36.45 33.15   35.46667</code></pre>
+<ol start="8" style="list-style-type: decimal">
+<li>Show Susan’s value for Opal Spring only.</li>
+</ol>
+<pre class="r"><code>springs_matrix[2, 3]</code></pre>
+<pre><code>## [1] 33.35</code></pre>
+<ol start="9" style="list-style-type: decimal">
+<li>Calculate the mean for Jill’s column only.</li>
+</ol>
+<pre class="r"><code>mean(springs_matrix[,1])</code></pre>
+<pre><code>## [1] 34.19375</code></pre>
+<ol start="10" style="list-style-type: decimal">
+<li>Use the data matrix to perform one calculation or operation of your
+interest.</li>
+</ol>
+<pre class="r"><code>median(springs_matrix)</code></pre>
+<pre><code>## [1] 33.025</code></pre>
 </div>
 <div id="push-your-final-code-to-github" class="section level2">
 <h2>Push your final code to GitHub!</h2>
