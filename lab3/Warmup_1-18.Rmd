@@ -1,0 +1,54 @@
+---
+title: "Warm-Up"
+author: "Elisabeth Sellinger"
+date: "2024-01-18"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+## Warm-up
+1. Build a vector that includes the following height measurements for five plants:
+plant 1 30.7, plant 2 37.6, plant 3 28.4, plant 4 NA, plant 5 33.2
+```{r}
+plant_height <- c(30.7, 37.6, 28.4, NA, 33.2)
+```
+
+2. Build another vector that includes the following mass measurements:
+plant 1 4, plant 2 5.2, plant 3 3.7, plant 4 NA, plant 5 4.6
+```{r}
+plant_weight <- c(4, 5.2, 3.7, NA, 4.6)
+```
+
+3. Assemble these vectors into a labeled data matrix with two columns
+```{r}
+# Make Labels for Matrix:
+
+samples <- c("plant1", "plant2", "plant3", "plant4", "plant5")
+measured <- c("height", "weight")
+
+plant_experiment <- c(plant_height, plant_weight)
+
+# Make Matrix:
+
+plant_experiment_matrix <- matrix(plant_experiment, nrow = 5, byrow = F)
+plant_experiment_matrix
+
+# Label Matrix:
+
+colnames(plant_experiment_matrix) <- measured
+rownames(plant_experiment_matrix) <- samples
+plant_experiment_matrix
+```
+
+4. Calculate the mean for height and mass and add them to the data matrix
+```{r}
+plant_means <- colMeans(plant_experiment_matrix, na.rm = T)
+plant_experiment_matrix
+
+# Add to Matrix:
+
+plant_experiment_matrix_final <- rbind(plant_experiment_matrix, plant_means)
+plant_experiment_matrix_final
+```
