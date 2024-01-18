@@ -7,7 +7,7 @@ output:
     theme: spacelab
     toc: no
 ---
-
+ 
 ## Instructions
 Answer the following questions and complete the exercises in RMarkdown. Please embed all of your code and push your final work to your repository. Your final lab report should be organized, clean, and run free from errors. Remember, you must remove the `#` for the included code chunks to run. Be sure to add your name to the author header above.  
 
@@ -22,8 +22,8 @@ library(tidyverse)
 1. For this assignment, we are going to use built-in data on mammal sleep patterns. From which publication are these data taken from? Since the data are built-in you can use the help function in R. The name of the data is `msleep`.  
 ```{r}
 ?msleep
-# Data taken from V. M. Savage and G. B. West. A quantitative, theoretical framework for understanding mammalian sleep. Proceedings of the National Academy of Sciences, 104 (3):1051-1056, 2007.
 ```
+**Data taken from V. M. Savage and G. B. West. A quantitative, theoretical framework for understanding mammalian sleep. Proceedings of the National Academy of Sciences, 104 (3):1051-1056, 2007.** 
 
 2. Store these data into a new data frame `sleep`.  
 ```{r}
@@ -33,14 +33,19 @@ sleep <- msleep
 3. What are the dimensions of this data frame (variables and observations)? How do you know? Please show the *code* that you used to determine this below.  
 ```{r}
 dim(sleep)
-# These data are 83 rows and 11 variables
 ```
+**The dimensions of this data frame are 83 observations of 11 variables.**  
 
 4. Are there any NAs in the data? How did you determine this? Please show your code.  
 ```{r}
 is.na(sleep)
-# Yes, there are TRUE values when you as R if there are any NAs in the data frame, indicating NA values
 ```
+**Yes, there are TRUE values when you ask R if there are any NAs in the data frame (using 'is.na(sleep)'), indicating NA values.** 
+
+```{r}
+sum(is.na(sleep))
+```
+**There are 136 NAs in the data frame.**  
 
 5. Show a list of the column names is this data frame.
 ```{r}
@@ -50,34 +55,50 @@ names(sleep)
 6. How many herbivores are represented in the data?  
 ```{r}
 table(sleep$vore)
-# There are 32 herbivores are represented in the data
 ```
+**There are 32 herbivores are represented in the data.**  
 
 7. We are interested in two groups; small and large mammals. Let's define small as less than or equal to 19kg body weight and large as greater than or equal to 200kg body weight. Make two new dataframes (large and small) based on these parameters.
 ```{r}
-small_mammals <- filter(sleep, bodywt <= 19)
+small_mammals <- filter(sleep, bodywt <= 19) # define small as less than or equal to 19kg body weight
 small_mammals
-large_mammals <- filter(sleep, bodywt >= 200)
+```
+```{r}
+large_mammals <- filter(sleep, bodywt >= 200) # define large as greater than or equal to 200kg body weight
 large_mammals
 ```
+
 
 8. What is the mean weight for both the small and large mammals?
 ```{r}
 mean_small_mammals <- mean(small_mammals$bodywt)
-mean_small_mammals # 
+mean_small_mammals
 ```
+**The mean weight of the small mammals is 1.798kg.**  
 
 ```{r}
 mean_large_mammals <- mean(large_mammals$bodywt)
-mean_large_mammals #
+mean_large_mammals
 ```
+**The mean weight of the large mammals is 1747.071kg. ** 
 
 9. Using a similar approach as above, do large or small animals sleep longer on average?  
+```{r}
+sleep_large_mammals <- mean(large_mammals$sleep_total)
+sleep_large_mammals # sleep 3.3 hours/day
+```
 
-
+```{r}
+sleep_small_mammals <-  mean(small_mammals$sleep_total)
+sleep_small_mammals # sleep 11.79 hours/day
+```
+**On average, small mammals sleep longer than large mammals.**  
 
 10. Which animal is the sleepiest among the entire dataframe?
-
+```{r}
+max(sleep$sleep_total)
+```
+**The sleepiest mammal among the entire data frame is the little brown bat which sleeps 19.9 hours per day. I know this because I found the max value in the sleep_total column using 'max(sleep$sleep_total)', opened the sleep dataframe, and then searched for the 19.9 value to see which animal it was from. I know it's hours/day because in the help section of the sleep dataframe, R lists out the units for each variable.**  
 
 ## Push your final code to GitHub!
 Please be sure that you check the `keep md` file in the knit preferences.   
