@@ -1,0 +1,41 @@
+---
+title: "Warmup"
+author: "Elisabeth Sellinger"
+date: "2024-01-23"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## R Markdown
+
+## 1. Install and load packages
+```{r}
+install.packages("palmerpenguins")
+install.packages("tidyverse")
+library(palmerpenguins)
+library(tidyverse)
+```
+
+## 2. Make penguins data set and look at dimensions
+```{r}
+penguins_data <- penguins
+dim(penguins_data)
+```
+
+## 3. Look at the variable names
+```{r}
+names(penguins_data)
+```
+
+## 4. Look at number of individuals sampled at each island
+```{r}
+table(penguins$island)
+```
+
+## 5. 
+```{r}
+mean(penguins_data$body_mass_g, na.rm = T)
+```
