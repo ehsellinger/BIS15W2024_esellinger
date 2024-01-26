@@ -124,15 +124,17 @@ mean(carnivores_data$mean.hra.m2, na.rm = T)
 **9. Make a new dataframe `owls` that is limited to the mean mass, log10 mass, family, genus, and species of owls in the database. Which is the smallest owl? What is its common name? Do a little bit of searching online to see what you can learn about this species and provide a link below** 
 ```{r}
 owls <- filter(homerange, order == "strigiformes")
-owls1 <- select(owls, "mean.mass.g","log10.mass", "family", "genus", "species")
-owls1 ## open owls1 data frame in new tab and sort from low to high to find smallest owl
+owls1 <- select(owls, "mean.mass.g","log10.mass", "family", "genus", "species") %>% 
+arrange(mean.mass.g)
+head(owls1)
 ```
 *Glaucidium passerinum is the smallest at 61.32g. Common name is Eurasian pygmy owl. https://animaldiversity.org/accounts/Glaucidium_passerinum/*
 
 **10. As measured by the data, which bird species has the largest homerange? Show all of your work, please. Look this species up online and tell me about it!**.  
 ```{r}
-birds <- filter(homerange, class == "aves")
-head(birds) # open birds data frame in new tab and filter mean.hra.m2 from high to low to find largest homerange
+birds <- filter(homerange, class == "aves") %>% 
+arrange(desc(mean.hra.m2))
+head(birds)
 ```
 *The bird species with the largest homerange is the Caracara cheriway (Northern crested caracara) at 241000000m2. https://animaldiversity.org/accounts/Caracara_cheriway/*
 
