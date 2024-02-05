@@ -13,7 +13,7 @@
 
 <meta name="date" content="2024-02-05" />
 
-<title>Lab 4 Homework</title>
+<title>Midterm 1</title>
 
 <script>// Pandoc 2.9 adds attributes on both header and div. We remove the former (to
 // be compatible with the behavior of Pandoc < 2.8).
@@ -374,7 +374,7 @@ display: none;
 
 
 
-<h1 class="title toc-ignore">Lab 4 Homework</h1>
+<h1 class="title toc-ignore">Midterm 1</h1>
 <h4 class="author">Elisabeth Sellinger</h4>
 <h4 class="date">2024-02-05</h4>
 
@@ -385,389 +385,308 @@ display: none;
 <h2>Instructions</h2>
 <p>Answer the following questions and complete the exercises in
 RMarkdown. Please embed all of your code and push your final work to
-your repository. Your final lab report should be organized, clean, and
-run free from errors. Remember, you must remove the <code>#</code> for
-the included code chunks to run. Be sure to add your name to the author
-header above.</p>
+your repository. Your code should be organized, clean, and run free from
+errors. Remember, you must remove the <code>#</code> for any included
+code chunks to run. Be sure to add your name to the author header above.
+You may use any resources to answer these questions, but you may not
+post questions to Open Stacks or external help sites. There are 15 total
+questions, each is worth 2 points.</p>
 <p>Make sure to use the formatting conventions of RMarkdown to make your
 report neat and clean!</p>
 </div>
 <div id="load-the-tidyverse" class="section level2">
 <h2>Load the tidyverse</h2>
+<p>If you plan to use any other libraries to complete this assignment
+then you should load them here.</p>
 <pre class="r"><code>library(tidyverse)</code></pre>
-</div>
-<div id="data" class="section level2">
-<h2>Data</h2>
-<p>For the homework, we will use data about vertebrate home range sizes.
-The data are in the class folder, but the reference is below.</p>
-<p><strong>Database of vertebrate home range sizes.</strong><br />
-Reference: Tamburello N, Cote IM, Dulvy NK (2015) Energy and the scaling
-of animal space use. The American Naturalist 186(2):196-211. <a href="http://dx.doi.org/10.1086/682070" class="uri">http://dx.doi.org/10.1086/682070</a>.<br />
-Data: <a href="http://datadryad.org/resource/doi:10.5061/dryad.q5j65/1" class="uri">http://datadryad.org/resource/doi:10.5061/dryad.q5j65/1</a></p>
-<p><strong>1. Load the data into a new object called
-<code>homerange</code>.</strong></p>
-<pre class="r"><code>homerange &lt;- read.csv(&quot;data/Tamburelloetal_HomeRangeDatabase.csv&quot;)</code></pre>
-<p><strong>2. Explore the data. Show the dimensions, column names,
-classes for each variable, and a statistical summary. Keep these as
-separate code chunks.</strong></p>
-<pre class="r"><code>dim(homerange)</code></pre>
-<pre><code>## [1] 569  24</code></pre>
-<pre class="r"><code>names(homerange)</code></pre>
-<pre><code>##  [1] &quot;taxon&quot;                      &quot;common.name&quot;               
-##  [3] &quot;class&quot;                      &quot;order&quot;                     
-##  [5] &quot;family&quot;                     &quot;genus&quot;                     
-##  [7] &quot;species&quot;                    &quot;primarymethod&quot;             
-##  [9] &quot;N&quot;                          &quot;mean.mass.g&quot;               
-## [11] &quot;log10.mass&quot;                 &quot;alternative.mass.reference&quot;
-## [13] &quot;mean.hra.m2&quot;                &quot;log10.hra&quot;                 
-## [15] &quot;hra.reference&quot;              &quot;realm&quot;                     
-## [17] &quot;thermoregulation&quot;           &quot;locomotion&quot;                
-## [19] &quot;trophic.guild&quot;              &quot;dimension&quot;                 
-## [21] &quot;preymass&quot;                   &quot;log10.preymass&quot;            
-## [23] &quot;PPMR&quot;                       &quot;prey.size.reference&quot;</code></pre>
-<pre class="r"><code>str(homerange)</code></pre>
-<pre><code>## &#39;data.frame&#39;:    569 obs. of  24 variables:
-##  $ taxon                     : chr  &quot;lake fishes&quot; &quot;river fishes&quot; &quot;river fishes&quot; &quot;river fishes&quot; ...
-##  $ common.name               : chr  &quot;american eel&quot; &quot;blacktail redhorse&quot; &quot;central stoneroller&quot; &quot;rosyside dace&quot; ...
-##  $ class                     : chr  &quot;actinopterygii&quot; &quot;actinopterygii&quot; &quot;actinopterygii&quot; &quot;actinopterygii&quot; ...
-##  $ order                     : chr  &quot;anguilliformes&quot; &quot;cypriniformes&quot; &quot;cypriniformes&quot; &quot;cypriniformes&quot; ...
-##  $ family                    : chr  &quot;anguillidae&quot; &quot;catostomidae&quot; &quot;cyprinidae&quot; &quot;cyprinidae&quot; ...
-##  $ genus                     : chr  &quot;anguilla&quot; &quot;moxostoma&quot; &quot;campostoma&quot; &quot;clinostomus&quot; ...
-##  $ species                   : chr  &quot;rostrata&quot; &quot;poecilura&quot; &quot;anomalum&quot; &quot;funduloides&quot; ...
-##  $ primarymethod             : chr  &quot;telemetry&quot; &quot;mark-recapture&quot; &quot;mark-recapture&quot; &quot;mark-recapture&quot; ...
-##  $ N                         : chr  &quot;16&quot; NA &quot;20&quot; &quot;26&quot; ...
-##  $ mean.mass.g               : num  887 562 34 4 4 ...
-##  $ log10.mass                : num  2.948 2.75 1.531 0.602 0.602 ...
-##  $ alternative.mass.reference: chr  NA NA NA NA ...
-##  $ mean.hra.m2               : num  282750 282.1 116.1 125.5 87.1 ...
-##  $ log10.hra                 : num  5.45 2.45 2.06 2.1 1.94 ...
-##  $ hra.reference             : chr  &quot;Minns, C. K. 1995. Allometry of home range size in lake and river fishes. Canadian Journal of Fisheries and Aquatic Sciences 52 &quot;Minns, C. K. 1995. Allometry of home range size in lake and river fishes. Canadian Journal of Fisheries and Aquatic Sciences 52 &quot;Minns, C. K. 1995. Allometry of home range size in lake and river fishes. Canadian Journal of Fisheries and Aquatic Sciences 52 &quot;Minns, C. K. 1995. Allometry of home range size in lake and river fishes. Canadian Journal of Fisheries and Aquatic Sciences 52 ...
-##  $ realm                     : chr  &quot;aquatic&quot; &quot;aquatic&quot; &quot;aquatic&quot; &quot;aquatic&quot; ...
-##  $ thermoregulation          : chr  &quot;ectotherm&quot; &quot;ectotherm&quot; &quot;ectotherm&quot; &quot;ectotherm&quot; ...
-##  $ locomotion                : chr  &quot;swimming&quot; &quot;swimming&quot; &quot;swimming&quot; &quot;swimming&quot; ...
-##  $ trophic.guild             : chr  &quot;carnivore&quot; &quot;carnivore&quot; &quot;carnivore&quot; &quot;carnivore&quot; ...
-##  $ dimension                 : chr  &quot;3D&quot; &quot;2D&quot; &quot;2D&quot; &quot;2D&quot; ...
-##  $ preymass                  : num  NA NA NA NA NA NA 1.39 NA NA NA ...
-##  $ log10.preymass            : num  NA NA NA NA NA ...
-##  $ PPMR                      : num  NA NA NA NA NA NA 530 NA NA NA ...
-##  $ prey.size.reference       : chr  NA NA NA NA ...</code></pre>
-<pre class="r"><code>summary(homerange)</code></pre>
-<pre><code>##     taxon           common.name           class              order          
-##  Length:569         Length:569         Length:569         Length:569        
-##  Class :character   Class :character   Class :character   Class :character  
-##  Mode  :character   Mode  :character   Mode  :character   Mode  :character  
-##                                                                             
-##                                                                             
-##                                                                             
-##                                                                             
-##     family             genus             species          primarymethod     
-##  Length:569         Length:569         Length:569         Length:569        
-##  Class :character   Class :character   Class :character   Class :character  
-##  Mode  :character   Mode  :character   Mode  :character   Mode  :character  
-##                                                                             
-##                                                                             
-##                                                                             
-##                                                                             
-##       N              mean.mass.g        log10.mass     
-##  Length:569         Min.   :      0   Min.   :-0.6576  
-##  Class :character   1st Qu.:     50   1st Qu.: 1.6990  
-##  Mode  :character   Median :    330   Median : 2.5185  
-##                     Mean   :  34602   Mean   : 2.5947  
-##                     3rd Qu.:   2150   3rd Qu.: 3.3324  
-##                     Max.   :4000000   Max.   : 6.6021  
-##                                                        
-##  alternative.mass.reference  mean.hra.m2          log10.hra     
-##  Length:569                 Min.   :0.000e+00   Min.   :-1.523  
-##  Class :character           1st Qu.:4.500e+03   1st Qu.: 3.653  
-##  Mode  :character           Median :3.934e+04   Median : 4.595  
-##                             Mean   :2.146e+07   Mean   : 4.709  
-##                             3rd Qu.:1.038e+06   3rd Qu.: 6.016  
-##                             Max.   :3.551e+09   Max.   : 9.550  
-##                                                                 
-##  hra.reference         realm           thermoregulation    locomotion       
-##  Length:569         Length:569         Length:569         Length:569        
-##  Class :character   Class :character   Class :character   Class :character  
-##  Mode  :character   Mode  :character   Mode  :character   Mode  :character  
-##                                                                             
-##                                                                             
-##                                                                             
-##                                                                             
-##  trophic.guild       dimension            preymass         log10.preymass   
-##  Length:569         Length:569         Min.   :     0.67   Min.   :-0.1739  
-##  Class :character   Class :character   1st Qu.:    20.02   1st Qu.: 1.3014  
-##  Mode  :character   Mode  :character   Median :    53.75   Median : 1.7304  
-##                                        Mean   :  3989.88   Mean   : 2.0188  
-##                                        3rd Qu.:   363.35   3rd Qu.: 2.5603  
-##                                        Max.   :130233.20   Max.   : 5.1147  
-##                                        NA&#39;s   :502         NA&#39;s   :502      
-##       PPMR         prey.size.reference
-##  Min.   :  0.380   Length:569         
-##  1st Qu.:  3.315   Class :character   
-##  Median :  7.190   Mode  :character   
-##  Mean   : 31.752                      
-##  3rd Qu.: 15.966                      
-##  Max.   :530.000                      
-##  NA&#39;s   :502</code></pre>
-<p><strong>3. Change the class of the variables <code>taxon</code> and
-<code>order</code> to factors and display their levels.</strong></p>
-<pre class="r"><code>homerange$taxon &lt;- as.factor(homerange$taxon)
-levels(homerange$taxon)</code></pre>
-<pre><code>## [1] &quot;birds&quot;         &quot;lake fishes&quot;   &quot;lizards&quot;       &quot;mammals&quot;      
-## [5] &quot;marine fishes&quot; &quot;river fishes&quot;  &quot;snakes&quot;        &quot;tortoises&quot;    
-## [9] &quot;turtles&quot;</code></pre>
-<pre class="r"><code>homerange$order &lt;- as.factor(homerange$order)
-levels(homerange$order)</code></pre>
-<pre><code>##  [1] &quot;accipitriformes&quot;       &quot;afrosoricida&quot;          &quot;anguilliformes&quot;       
-##  [4] &quot;anseriformes&quot;          &quot;apterygiformes&quot;        &quot;artiodactyla&quot;         
-##  [7] &quot;caprimulgiformes&quot;      &quot;carnivora&quot;             &quot;charadriiformes&quot;      
-## [10] &quot;columbidormes&quot;         &quot;columbiformes&quot;         &quot;coraciiformes&quot;        
-## [13] &quot;cuculiformes&quot;          &quot;cypriniformes&quot;         &quot;dasyuromorpha&quot;        
-## [16] &quot;dasyuromorpia&quot;         &quot;didelphimorphia&quot;       &quot;diprodontia&quot;          
-## [19] &quot;diprotodontia&quot;         &quot;erinaceomorpha&quot;        &quot;esociformes&quot;          
-## [22] &quot;falconiformes&quot;         &quot;gadiformes&quot;            &quot;galliformes&quot;          
-## [25] &quot;gruiformes&quot;            &quot;lagomorpha&quot;            &quot;macroscelidea&quot;        
-## [28] &quot;monotrematae&quot;          &quot;passeriformes&quot;         &quot;pelecaniformes&quot;       
-## [31] &quot;peramelemorphia&quot;       &quot;perciformes&quot;           &quot;perissodactyla&quot;       
-## [34] &quot;piciformes&quot;            &quot;pilosa&quot;                &quot;proboscidea&quot;          
-## [37] &quot;psittaciformes&quot;        &quot;rheiformes&quot;            &quot;roden&quot;                
-## [40] &quot;rodentia&quot;              &quot;salmoniformes&quot;         &quot;scorpaeniformes&quot;      
-## [43] &quot;siluriformes&quot;          &quot;soricomorpha&quot;          &quot;squamata&quot;             
-## [46] &quot;strigiformes&quot;          &quot;struthioniformes&quot;      &quot;syngnathiformes&quot;      
-## [49] &quot;testudines&quot;            &quot;tetraodontiformes\xa0&quot; &quot;tinamiformes&quot;</code></pre>
-<p><strong>4. What taxa are represented in the <code>homerange</code>
-data frame? Make a new data frame <code>taxa</code> that is restricted
-to taxon, common name, class, order, family, genus,
-species.</strong></p>
-<pre class="r"><code>levels(homerange$taxon)</code></pre>
-<pre><code>## [1] &quot;birds&quot;         &quot;lake fishes&quot;   &quot;lizards&quot;       &quot;mammals&quot;      
-## [5] &quot;marine fishes&quot; &quot;river fishes&quot;  &quot;snakes&quot;        &quot;tortoises&quot;    
-## [9] &quot;turtles&quot;</code></pre>
-<pre class="r"><code>taxa &lt;- select(homerange, &quot;taxon&quot;, &quot;common.name&quot;, &quot;class&quot;, &quot;order&quot;, &quot;family&quot;, &quot;genus&quot;, &quot;species&quot;)
-head(taxa)</code></pre>
-<pre><code>##          taxon         common.name          class          order       family
-## 1  lake fishes        american eel actinopterygii anguilliformes  anguillidae
-## 2 river fishes  blacktail redhorse actinopterygii  cypriniformes catostomidae
-## 3 river fishes central stoneroller actinopterygii  cypriniformes   cyprinidae
-## 4 river fishes       rosyside dace actinopterygii  cypriniformes   cyprinidae
-## 5 river fishes       longnose dace actinopterygii  cypriniformes   cyprinidae
-## 6 river fishes        muskellunge  actinopterygii    esociformes     esocidae
-##         genus     species
-## 1    anguilla    rostrata
-## 2   moxostoma   poecilura
-## 3  campostoma    anomalum
-## 4 clinostomus funduloides
-## 5 rhinichthys  cataractae
-## 6        esox masquinongy</code></pre>
-<p><strong>5. The variable <code>taxon</code> identifies the common name
-groups of the species represented in <code>homerange</code>. Make a
-table that shows the counts for each of these
-<code>taxon</code>.</strong></p>
-<pre class="r"><code>table(homerange$taxon)</code></pre>
+<pre><code>## ── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──
+## ✔ dplyr     1.1.4     ✔ readr     2.1.5
+## ✔ forcats   1.0.0     ✔ stringr   1.5.1
+## ✔ ggplot2   3.4.4     ✔ tibble    3.2.1
+## ✔ lubridate 1.9.3     ✔ tidyr     1.3.1
+## ✔ purrr     1.0.2     
+## ── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
+## ✖ dplyr::filter() masks stats::filter()
+## ✖ dplyr::lag()    masks stats::lag()
+## ℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors</code></pre>
+<pre class="r"><code>library(janitor)</code></pre>
 <pre><code>## 
-##         birds   lake fishes       lizards       mammals marine fishes 
-##           140             9            11           238            90 
-##  river fishes        snakes     tortoises       turtles 
-##            14            41            12            14</code></pre>
-<p><strong>6. The species in <code>homerange</code> are also classified
-into trophic guilds. How many species are represented in each trophic
-guild.</strong></p>
-<pre class="r"><code>herbivores &lt;- filter(homerange, trophic.guild == &quot;herbivore&quot;)
-sum(table(herbivores$species))</code></pre>
-<pre><code>## [1] 227</code></pre>
-<pre class="r"><code>carnivores &lt;- filter(homerange, trophic.guild == &quot;carnivore&quot;)
-sum(table(carnivores$species))</code></pre>
-<pre><code>## [1] 342</code></pre>
-<pre class="r"><code>count(homerange, trophic.guild)</code></pre>
-<pre><code>##   trophic.guild   n
-## 1     carnivore 342
-## 2     herbivore 227</code></pre>
-<pre class="r"><code>homerange %&gt;% group_by(trophic.guild) %&gt;% summarize(n_species=n_distinct(species)) # how many carnivores/herbivores for each specific epithet</code></pre>
+## Attaching package: &#39;janitor&#39;
+## 
+## The following objects are masked from &#39;package:stats&#39;:
+## 
+##     chisq.test, fisher.test</code></pre>
+</div>
+<div id="questions" class="section level2">
+<h2>Questions</h2>
+<p>Wikipedia’s definition of <a href="https://en.wikipedia.org/wiki/Data_science">data science</a>:
+“Data science is an interdisciplinary field that uses scientific
+methods, processes, algorithms and systems to extract knowledge and
+insights from noisy, structured and unstructured data, and apply
+knowledge and actionable insights from data across a broad range of
+application domains.”</p>
+<ol style="list-style-type: decimal">
+<li>(2 points) Consider the definition of data science above. Although
+we are only part-way through the quarter, what specific elements of data
+science do you feel we have practiced? Provide at least one specific
+example.</li>
+</ol>
+<div id="so-far-this-quarter-we-have-practiced-many-elements-of-data-science-as-described-above.-we-have-learned-how-to-clean-up-the-names-of-columns-from-dataframes-select-certain-columns-of-interest-filter-out-data-we-either-do-or-dont-need-and-sort-the-data-from-increasing-to-decreasing-values-and-visversa-for-easy-viewing.-in-terms-of-extracting-knowledge-we-have-learned-how-to-summarize-data-into-organized-viewing-tables-to-obtain-the-mean-min-and-max-values-from-certain-values-within-a-column-of-a-dataframe." class="section level4">
+<h4>So far this quarter we have practiced many elements of data science
+as described above. We have learned how to clean up the names of columns
+from dataframes, select certain columns of interest, filter out data we
+either do or don’t need, and sort the data from increasing to decreasing
+values (and visversa) for easy viewing. In terms of extracting
+knowledge, we have learned how to summarize data into organized viewing
+tables to obtain the mean, min, and max values from certain values
+within a column of a dataframe.</h4>
+<pre class="r"><code># examples of data organzing: clean_names(data), select(data, column1, column2...), filter(data, column == &quot;value&quot;), arrange(data$column)
+# examples of extracting knowledge: summarize(data, name == mean(column))</code></pre>
+<ol start="2" style="list-style-type: decimal">
+<li>(2 points) What is the most helpful or interesting thing you have
+learned so far in BIS 15L? What is something that you think needs more
+work or practice?</li>
+</ol>
+</div>
+<div id="the-most-helpful-thing-i-have-learned-so-far-is-the-filter-function-and-group_by-function.-they-have-really-helped-me-break-down-the-data-in-meaningful-ways.-i-think-i-need-more-practice-with-the-across-function-and-all-its-uses." class="section level4">
+<h4>The most helpful thing I have learned so far is the
+<code>filter()</code> function and <code>group_by()</code> function.
+They have really helped me break down the data in meaningful ways. I
+think I need more practice with the <code>across()</code> function and
+all its uses.</h4>
+<p>In the midterm 1 folder there is a second folder called
+<code>data</code>. Inside the <code>data</code> folder, there is a .csv
+file called <code>ElephantsMF</code>. These data are from Phyllis Lee,
+Stirling University, and are related to Lee, P., et al. (2013),
+“Enduring consequences of early experiences: 40-year effects on survival
+and success among African elephants (Loxodonta africana),” Biology
+Letters, 9: 20130011. <a href="https://www.kaggle.com/mostafaelseidy/elephantsmf">kaggle</a>.</p>
+<ol start="3" style="list-style-type: decimal">
+<li>(2 points) Please load these data as a new object called
+<code>elephants</code>. Use the function(s) of your choice to get an
+idea of the structure of the data. Be sure to show the class of each
+variable.</li>
+</ol>
+<pre class="r"><code>elephants &lt;- read_csv(&quot;data/ElephantsMF.csv&quot;)</code></pre>
+<pre><code>## Rows: 288 Columns: 3
+## ── Column specification ────────────────────────────────────────────────────────
+## Delimiter: &quot;,&quot;
+## chr (1): Sex
+## dbl (2): Age, Height
+## 
+## ℹ Use `spec()` to retrieve the full column specification for this data.
+## ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
+<pre class="r"><code>glimpse(elephants)</code></pre>
+<pre><code>## Rows: 288
+## Columns: 3
+## $ Age    &lt;dbl&gt; 1.40, 17.50, 12.75, 11.17, 12.67, 12.67, 12.25, 12.17, 28.17, 1…
+## $ Height &lt;dbl&gt; 120.00, 227.00, 235.00, 210.00, 220.00, 189.00, 225.00, 204.00,…
+## $ Sex    &lt;chr&gt; &quot;M&quot;, &quot;M&quot;, &quot;M&quot;, &quot;M&quot;, &quot;M&quot;, &quot;M&quot;, &quot;M&quot;, &quot;M&quot;, &quot;M&quot;, &quot;M&quot;, &quot;M&quot;, &quot;M&quot;, &quot;M&quot;…</code></pre>
+<ol start="4" style="list-style-type: decimal">
+<li>(2 points) Change the names of the variables to lower case and
+change the class of the variable <code>sex</code> to a factor.</li>
+</ol>
+<pre class="r"><code>elephants &lt;- elephants %&gt;% 
+  clean_names()
+  elephants$sex &lt;- as.factor(elephants$sex)</code></pre>
+<ol start="5" style="list-style-type: decimal">
+<li>(2 points) How many male and female elephants are represented in the
+data?</li>
+</ol>
+<pre class="r"><code>elephants %&gt;% 
+  count(sex)</code></pre>
 <pre><code>## # A tibble: 2 × 2
-##   trophic.guild n_species
-##   &lt;chr&gt;             &lt;int&gt;
-## 1 carnivore           322
-## 2 herbivore           212</code></pre>
+##   sex       n
+##   &lt;fct&gt; &lt;int&gt;
+## 1 F       150
+## 2 M       138</code></pre>
+<ol start="6" style="list-style-type: decimal">
+<li>(2 points) What is the average age all elephants in the data?</li>
+</ol>
+<pre class="r"><code>elephants %&gt;% 
+  summarize(average_age = mean(age))</code></pre>
+<pre><code>## # A tibble: 1 × 1
+##   average_age
+##         &lt;dbl&gt;
+## 1        11.0</code></pre>
+<ol start="7" style="list-style-type: decimal">
+<li>(2 points) How does the average age and height of elephants compare
+by sex?</li>
+</ol>
+<pre class="r"><code>elephants %&gt;% 
+  group_by(sex) %&gt;% 
+  summarize(average_age = mean(age))</code></pre>
+<pre><code>## # A tibble: 2 × 2
+##   sex   average_age
+##   &lt;fct&gt;       &lt;dbl&gt;
+## 1 F           12.8 
+## 2 M            8.95</code></pre>
+<ol start="8" style="list-style-type: decimal">
+<li>(2 points) How does the average height of elephants compare by sex
+for individuals over 20 years old. Include the min and max height as
+well as the number of individuals in the sample as part of your
+analysis.</li>
+</ol>
+<pre class="r"><code>elephants %&gt;% 
+  group_by(sex) %&gt;% 
+  filter(age &gt; 20) %&gt;% 
+  summarize(average_height = mean(height),
+            min_height = min(height),
+            max_height = max(height),
+            total_elephants = n())</code></pre>
+<pre><code>## # A tibble: 2 × 5
+##   sex   average_height min_height max_height total_elephants
+##   &lt;fct&gt;          &lt;dbl&gt;      &lt;dbl&gt;      &lt;dbl&gt;           &lt;int&gt;
+## 1 F               232.       193.       278.              37
+## 2 M               270.       229.       304.              13</code></pre>
+<p>For the next series of questions, we will use data from a study on
+vertebrate community composition and impacts from defaunation in <a href="https://en.wikipedia.org/wiki/Gabon">Gabon, Africa</a>. One thing
+to notice is that the data include 24 separate transects. Each transect
+represents a path through different forest management areas.</p>
+<p>Reference: Koerner SE, Poulsen JR, Blanchard EJ, Okouyi J, Clark CJ.
+Vertebrate community composition and diversity declines along a
+defaunation gradient radiating from rural villages in Gabon. <em>Journal
+of Applied Ecology</em>. 2016. This paper, along with a description of
+the variables is included inside the midterm 1 folder.</p>
+<ol start="9" style="list-style-type: decimal">
+<li>(2 points) Load <code>IvindoData_DryadVersion.csv</code> and use the
+function(s) of your choice to get an idea of the overall structure.
+Change the variables <code>HuntCat</code> and <code>LandUse</code> to
+factors.</li>
+</ol>
+<pre class="r"><code>vertebrates &lt;- read_csv(&quot;data/IvindoData_DryadVersion.csv&quot;)</code></pre>
+<pre><code>## Rows: 24 Columns: 26
+## ── Column specification ────────────────────────────────────────────────────────
+## Delimiter: &quot;,&quot;
+## chr  (2): HuntCat, LandUse
+## dbl (24): TransectID, Distance, NumHouseholds, Veg_Rich, Veg_Stems, Veg_lian...
+## 
+## ℹ Use `spec()` to retrieve the full column specification for this data.
+## ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
+<pre class="r"><code>glimpse(vertebrates)</code></pre>
+<pre><code>## Rows: 24
+## Columns: 26
+## $ TransectID              &lt;dbl&gt; 1, 2, 2, 3, 4, 5, 6, 7, 8, 9, 13, 14, 15, 16, …
+## $ Distance                &lt;dbl&gt; 7.14, 17.31, 18.32, 20.85, 15.95, 17.47, 24.06…
+## $ HuntCat                 &lt;chr&gt; &quot;Moderate&quot;, &quot;None&quot;, &quot;None&quot;, &quot;None&quot;, &quot;None&quot;, &quot;N…
+## $ NumHouseholds           &lt;dbl&gt; 54, 54, 29, 29, 29, 29, 29, 54, 25, 73, 46, 56…
+## $ LandUse                 &lt;chr&gt; &quot;Park&quot;, &quot;Park&quot;, &quot;Park&quot;, &quot;Logging&quot;, &quot;Park&quot;, &quot;Pa…
+## $ Veg_Rich                &lt;dbl&gt; 16.67, 15.75, 16.88, 12.44, 17.13, 16.50, 14.7…
+## $ Veg_Stems               &lt;dbl&gt; 31.20, 37.44, 32.33, 29.39, 36.00, 29.22, 31.2…
+## $ Veg_liana               &lt;dbl&gt; 5.78, 13.25, 4.75, 9.78, 13.25, 12.88, 8.38, 8…
+## $ Veg_DBH                 &lt;dbl&gt; 49.57, 34.59, 42.82, 36.62, 41.52, 44.07, 51.2…
+## $ Veg_Canopy              &lt;dbl&gt; 3.78, 3.75, 3.43, 3.75, 3.88, 2.50, 4.00, 4.00…
+## $ Veg_Understory          &lt;dbl&gt; 2.89, 3.88, 3.00, 2.75, 3.25, 3.00, 2.38, 2.71…
+## $ RA_Apes                 &lt;dbl&gt; 1.87, 0.00, 4.49, 12.93, 0.00, 2.48, 3.78, 6.1…
+## $ RA_Birds                &lt;dbl&gt; 52.66, 52.17, 37.44, 59.29, 52.62, 38.64, 42.6…
+## $ RA_Elephant             &lt;dbl&gt; 0.00, 0.86, 1.33, 0.56, 1.00, 0.00, 1.11, 0.43…
+## $ RA_Monkeys              &lt;dbl&gt; 38.59, 28.53, 41.82, 19.85, 41.34, 43.29, 46.2…
+## $ RA_Rodent               &lt;dbl&gt; 4.22, 6.04, 1.06, 3.66, 2.52, 1.83, 3.10, 1.26…
+## $ RA_Ungulate             &lt;dbl&gt; 2.66, 12.41, 13.86, 3.71, 2.53, 13.75, 3.10, 8…
+## $ Rich_AllSpecies         &lt;dbl&gt; 22, 20, 22, 19, 20, 22, 23, 19, 19, 19, 21, 22…
+## $ Evenness_AllSpecies     &lt;dbl&gt; 0.793, 0.773, 0.740, 0.681, 0.811, 0.786, 0.81…
+## $ Diversity_AllSpecies    &lt;dbl&gt; 2.452, 2.314, 2.288, 2.006, 2.431, 2.429, 2.56…
+## $ Rich_BirdSpecies        &lt;dbl&gt; 11, 10, 11, 8, 8, 10, 11, 11, 11, 9, 11, 11, 1…
+## $ Evenness_BirdSpecies    &lt;dbl&gt; 0.732, 0.704, 0.688, 0.559, 0.799, 0.771, 0.80…
+## $ Diversity_BirdSpecies   &lt;dbl&gt; 1.756, 1.620, 1.649, 1.162, 1.660, 1.775, 1.92…
+## $ Rich_MammalSpecies      &lt;dbl&gt; 11, 10, 11, 11, 12, 12, 12, 8, 8, 10, 10, 11, …
+## $ Evenness_MammalSpecies  &lt;dbl&gt; 0.736, 0.705, 0.650, 0.619, 0.736, 0.694, 0.77…
+## $ Diversity_MammalSpecies &lt;dbl&gt; 1.764, 1.624, 1.558, 1.484, 1.829, 1.725, 1.92…</code></pre>
+<pre class="r"><code>vertebrates &lt;- vertebrates %&gt;% 
+   mutate_if(is.character, factor) %&gt;% 
+   clean_names()
+glimpse(vertebrates)</code></pre>
+<pre><code>## Rows: 24
+## Columns: 26
+## $ transect_id              &lt;dbl&gt; 1, 2, 2, 3, 4, 5, 6, 7, 8, 9, 13, 14, 15, 16,…
+## $ distance                 &lt;dbl&gt; 7.14, 17.31, 18.32, 20.85, 15.95, 17.47, 24.0…
+## $ hunt_cat                 &lt;fct&gt; Moderate, None, None, None, None, None, None,…
+## $ num_households           &lt;dbl&gt; 54, 54, 29, 29, 29, 29, 29, 54, 25, 73, 46, 5…
+## $ land_use                 &lt;fct&gt; Park, Park, Park, Logging, Park, Park, Park, …
+## $ veg_rich                 &lt;dbl&gt; 16.67, 15.75, 16.88, 12.44, 17.13, 16.50, 14.…
+## $ veg_stems                &lt;dbl&gt; 31.20, 37.44, 32.33, 29.39, 36.00, 29.22, 31.…
+## $ veg_liana                &lt;dbl&gt; 5.78, 13.25, 4.75, 9.78, 13.25, 12.88, 8.38, …
+## $ veg_dbh                  &lt;dbl&gt; 49.57, 34.59, 42.82, 36.62, 41.52, 44.07, 51.…
+## $ veg_canopy               &lt;dbl&gt; 3.78, 3.75, 3.43, 3.75, 3.88, 2.50, 4.00, 4.0…
+## $ veg_understory           &lt;dbl&gt; 2.89, 3.88, 3.00, 2.75, 3.25, 3.00, 2.38, 2.7…
+## $ ra_apes                  &lt;dbl&gt; 1.87, 0.00, 4.49, 12.93, 0.00, 2.48, 3.78, 6.…
+## $ ra_birds                 &lt;dbl&gt; 52.66, 52.17, 37.44, 59.29, 52.62, 38.64, 42.…
+## $ ra_elephant              &lt;dbl&gt; 0.00, 0.86, 1.33, 0.56, 1.00, 0.00, 1.11, 0.4…
+## $ ra_monkeys               &lt;dbl&gt; 38.59, 28.53, 41.82, 19.85, 41.34, 43.29, 46.…
+## $ ra_rodent                &lt;dbl&gt; 4.22, 6.04, 1.06, 3.66, 2.52, 1.83, 3.10, 1.2…
+## $ ra_ungulate              &lt;dbl&gt; 2.66, 12.41, 13.86, 3.71, 2.53, 13.75, 3.10, …
+## $ rich_all_species         &lt;dbl&gt; 22, 20, 22, 19, 20, 22, 23, 19, 19, 19, 21, 2…
+## $ evenness_all_species     &lt;dbl&gt; 0.793, 0.773, 0.740, 0.681, 0.811, 0.786, 0.8…
+## $ diversity_all_species    &lt;dbl&gt; 2.452, 2.314, 2.288, 2.006, 2.431, 2.429, 2.5…
+## $ rich_bird_species        &lt;dbl&gt; 11, 10, 11, 8, 8, 10, 11, 11, 11, 9, 11, 11, …
+## $ evenness_bird_species    &lt;dbl&gt; 0.732, 0.704, 0.688, 0.559, 0.799, 0.771, 0.8…
+## $ diversity_bird_species   &lt;dbl&gt; 1.756, 1.620, 1.649, 1.162, 1.660, 1.775, 1.9…
+## $ rich_mammal_species      &lt;dbl&gt; 11, 10, 11, 11, 12, 12, 12, 8, 8, 10, 10, 11,…
+## $ evenness_mammal_species  &lt;dbl&gt; 0.736, 0.705, 0.650, 0.619, 0.736, 0.694, 0.7…
+## $ diversity_mammal_species &lt;dbl&gt; 1.764, 1.624, 1.558, 1.484, 1.829, 1.725, 1.9…</code></pre>
+<ol start="10" style="list-style-type: decimal">
+<li>(4 points) For the transects with high and moderate hunting
+intensity, how does the average diversity of birds and mammals
+compare?</li>
+</ol>
+<pre class="r"><code>vertebrates %&gt;% 
+  filter(hunt_cat == &quot;High&quot; | hunt_cat == &quot;Moderate&quot;) %&gt;% 
+  summarize(birds_diversity = mean(diversity_bird_species),
+            mammals_diversity = mean(diversity_mammal_species))</code></pre>
+<pre><code>## # A tibble: 1 × 2
+##   birds_diversity mammals_diversity
+##             &lt;dbl&gt;             &lt;dbl&gt;
+## 1            1.64              1.71</code></pre>
+<ol start="11" style="list-style-type: decimal">
+<li>(4 points) One of the conclusions in the study is that the relative
+abundance of animals drops off the closer you get to a village. Let’s
+try to reconstruct this (without the statistics). How does the relative
+abundance (RA) of apes, birds, elephants, monkeys, rodents, and
+ungulates compare between sites that are less than 3km from a village to
+sites that are greater than 25km from a village? The variable
+<code>Distance</code> measures the distance of the transect from the
+nearest village. Hint: try using the <code>across</code> operator.</li>
+</ol>
+<pre class="r"><code>vertebrates %&gt;%
+  filter(distance &gt; 3) %&gt;% 
+  summarize(across(contains(&quot;ra_&quot;), mean, na.rm=T))</code></pre>
+<pre><code>## Warning: There was 1 warning in `summarize()`.
+## ℹ In argument: `across(contains(&quot;ra_&quot;), mean, na.rm = T)`.
+## Caused by warning:
+## ! The `...` argument of `across()` is deprecated as of dplyr 1.1.0.
+## Supply arguments directly to `.fns` through an anonymous function instead.
+## 
+##   # Previously
+##   across(a:b, mean, na.rm = TRUE)
+## 
+##   # Now
+##   across(a:b, \(x) mean(x, na.rm = TRUE))</code></pre>
+<pre><code>## # A tibble: 1 × 6
+##   ra_apes ra_birds ra_elephant ra_monkeys ra_rodent ra_ungulate
+##     &lt;dbl&gt;    &lt;dbl&gt;       &lt;dbl&gt;      &lt;dbl&gt;     &lt;dbl&gt;       &lt;dbl&gt;
+## 1    2.22     57.0       0.581       32.6      3.22        4.38</code></pre>
+<pre class="r"><code>vertebrates %&gt;%
+  filter(distance &lt; 25) %&gt;% 
+  summarize(across(contains(&quot;ra_&quot;), mean, na.rm=T))</code></pre>
+<pre><code>## # A tibble: 1 × 6
+##   ra_apes ra_birds ra_elephant ra_monkeys ra_rodent ra_ungulate
+##     &lt;dbl&gt;    &lt;dbl&gt;       &lt;dbl&gt;      &lt;dbl&gt;     &lt;dbl&gt;       &lt;dbl&gt;
+## 1    1.92     59.8       0.569       30.3      3.36        3.99</code></pre>
+<ol start="12" style="list-style-type: decimal">
+<li>(4 points) Based on your interest, do one exploratory analysis on
+the <code>gabon</code> data of your choice. This analysis needs to
+include a minimum of two functions in <code>dplyr.</code></li>
+</ol>
+<pre class="r"><code>vertebrates %&gt;% 
+  group_by(hunt_cat) %&gt;% 
+  filter(land_use == &quot;Park&quot;) %&gt;% 
+  summarize(average_canopy = mean(veg_canopy))</code></pre>
+<pre><code>## # A tibble: 2 × 2
+##   hunt_cat average_canopy
+##   &lt;fct&gt;             &lt;dbl&gt;
+## 1 Moderate           3.78
+## 2 None               3.57</code></pre>
 </div>
-<div id="finish-1-6-for-125" class="section level2">
-<h2>Finish 1-6 for 1/25</h2>
-<p><strong>7. Make two new data frames, one which is restricted to
-carnivores and another that is restricted to herbivores.</strong></p>
-<pre class="r"><code>carnivores_data &lt;- filter(homerange, trophic.guild == &quot;carnivore&quot;)
-head(carnivores_data)</code></pre>
-<pre><code>##          taxon         common.name          class          order       family
-## 1  lake fishes        american eel actinopterygii anguilliformes  anguillidae
-## 2 river fishes  blacktail redhorse actinopterygii  cypriniformes catostomidae
-## 3 river fishes central stoneroller actinopterygii  cypriniformes   cyprinidae
-## 4 river fishes       rosyside dace actinopterygii  cypriniformes   cyprinidae
-## 5 river fishes       longnose dace actinopterygii  cypriniformes   cyprinidae
-## 6 river fishes        muskellunge  actinopterygii    esociformes     esocidae
-##         genus     species  primarymethod    N mean.mass.g log10.mass
-## 1    anguilla    rostrata      telemetry   16         887   2.947924
-## 2   moxostoma   poecilura mark-recapture &lt;NA&gt;         562   2.749736
-## 3  campostoma    anomalum mark-recapture   20          34   1.531479
-## 4 clinostomus funduloides mark-recapture   26           4   0.602060
-## 5 rhinichthys  cataractae mark-recapture   17           4   0.602060
-## 6        esox masquinongy      telemetry    5        3525   3.547159
-##   alternative.mass.reference mean.hra.m2 log10.hra
-## 1                       &lt;NA&gt;   282750.00  5.451403
-## 2                       &lt;NA&gt;      282.10  2.450403
-## 3                       &lt;NA&gt;      116.11  2.064870
-## 4                       &lt;NA&gt;      125.50  2.098644
-## 5                       &lt;NA&gt;       87.10  1.940018
-## 6                       &lt;NA&gt;    39343.50  4.594873
-##                                                                                                                                hra.reference
-## 1 Minns, C. K. 1995. Allometry of home range size in lake and river fishes. Canadian Journal of Fisheries and Aquatic Sciences 52:1499-1508.
-## 2 Minns, C. K. 1995. Allometry of home range size in lake and river fishes. Canadian Journal of Fisheries and Aquatic Sciences 52:1499-1508.
-## 3 Minns, C. K. 1995. Allometry of home range size in lake and river fishes. Canadian Journal of Fisheries and Aquatic Sciences 52:1499-1508.
-## 4 Minns, C. K. 1995. Allometry of home range size in lake and river fishes. Canadian Journal of Fisheries and Aquatic Sciences 52:1499-1508.
-## 5 Minns, C. K. 1995. Allometry of home range size in lake and river fishes. Canadian Journal of Fisheries and Aquatic Sciences 52:1499-1508.
-## 6 Minns, C. K. 1995. Allometry of home range size in lake and river fishes. Canadian Journal of Fisheries and Aquatic Sciences 52:1499-1508.
-##     realm thermoregulation locomotion trophic.guild dimension preymass
-## 1 aquatic        ectotherm   swimming     carnivore        3D       NA
-## 2 aquatic        ectotherm   swimming     carnivore        2D       NA
-## 3 aquatic        ectotherm   swimming     carnivore        2D       NA
-## 4 aquatic        ectotherm   swimming     carnivore        2D       NA
-## 5 aquatic        ectotherm   swimming     carnivore        2D       NA
-## 6 aquatic        ectotherm   swimming     carnivore        2D       NA
-##   log10.preymass PPMR prey.size.reference
-## 1             NA   NA                &lt;NA&gt;
-## 2             NA   NA                &lt;NA&gt;
-## 3             NA   NA                &lt;NA&gt;
-## 4             NA   NA                &lt;NA&gt;
-## 5             NA   NA                &lt;NA&gt;
-## 6             NA   NA                &lt;NA&gt;</code></pre>
-<pre class="r"><code>herbivores_data &lt;- filter(homerange, trophic.guild == &quot;herbivore&quot;)
-head(herbivores_data)</code></pre>
-<pre><code>##           taxon             common.name          class       order
-## 1 marine fishes       lined surgeonfish actinopterygii perciformes
-## 2 marine fishes orangespine unicornfish actinopterygii perciformes
-## 3 marine fishes   bluespine unicornfish actinopterygii perciformes
-## 4 marine fishes           redlip blenny actinopterygii perciformes
-## 5 marine fishes            bermuda chub actinopterygii perciformes
-## 6 marine fishes              cherubfish actinopterygii perciformes
-##          family         genus    species      primarymethod    N mean.mass.g
-## 1  acanthuridae    acanthurus   lineatus direct observation &lt;NA&gt;      109.04
-## 2  acanthuridae          naso  lituratus          telemetry    8      772.16
-## 3  acanthuridae          naso  unicornis          telemetry    7      151.84
-## 4     blennidae ophioblennius atlanticus direct observation   20        6.20
-## 5    kyphosidae      kyphosus  sectatrix          telemetry   11     1086.71
-## 6 pomacanthidae    centropyge       argi direct observation &lt;NA&gt;        2.50
-##   log10.mass alternative.mass.reference mean.hra.m2   log10.hra
-## 1  2.0375858                       &lt;NA&gt;       11.13  1.04649516
-## 2  2.8877073                       &lt;NA&gt;    32092.86  4.50640842
-## 3  2.1813862                       &lt;NA&gt;    17900.00  4.25285303
-## 4  0.7923917                       &lt;NA&gt;        0.52 -0.28399666
-## 5  3.0361137                       &lt;NA&gt;    34423.00  4.53684872
-## 6  0.3979400                       &lt;NA&gt;        1.13  0.05307844
-##                                                                                                                                                                                                                                 hra.reference
-## 1                                                                                                Nursall JR. 1974. Some Territorial Behavioral Attributes of the Surgeonfish Acanthurus lineatus at Heron Island, Queensland. Copeia 950-959.
-## 2                                       Marshell A, Mills JS, Rhodes KL, et al. 2011. Passive acoustic telemetry reveals highly variable home range and movement patterns among unicornfish within a marine reserve. Coral Reefs 30, 631-642.
-## 3                                       Marshell A, Mills JS, Rhodes KL, et al. 2011. Passive acoustic telemetry reveals highly variable home range and movement patterns among unicornfish within a marine reserve. Coral Reefs 30, 631-642.
-## 4                                                                                              Nursall JR. 1977. Territoriality in Redlip blennies (Ophioblennius atlanticus - Pisces : Blenniidae). Journal of Zoology, London 182, 205-223.
-## 5 Eristhee N, Oxenford HA. 2001. Home range size and use of space by Bermuda chub Kyphosus sectatrix (L.) in two marine reserves in the Soufri\xe8re Marine Management Area, St Lucia, West Indies. Journal of Fisheries Biology 59, 129-151.
-## 6                                                                                                                      Luckhurst BE, Luckhurst K. 1978. Diurnal Space Utilization in Coral Reef Fish Communities. Marine Biology 49, 325-332.
-##     realm thermoregulation locomotion trophic.guild dimension preymass
-## 1 aquatic        ectotherm   swimming     herbivore        2D       NA
-## 2 aquatic        ectotherm   swimming     herbivore        2D       NA
-## 3 aquatic        ectotherm   swimming     herbivore        2D       NA
-## 4 aquatic        ectotherm   swimming     herbivore        2D       NA
-## 5 aquatic        ectotherm   swimming     herbivore        2D       NA
-## 6 aquatic        ectotherm   swimming     herbivore        2D       NA
-##   log10.preymass PPMR prey.size.reference
-## 1             NA   NA                &lt;NA&gt;
-## 2             NA   NA                &lt;NA&gt;
-## 3             NA   NA                &lt;NA&gt;
-## 4             NA   NA                &lt;NA&gt;
-## 5             NA   NA                &lt;NA&gt;
-## 6             NA   NA                &lt;NA&gt;</code></pre>
-<p><strong>8. Do herbivores or carnivores have, on average, a larger
-<code>mean.hra.m2</code>? Remove any NAs from the data.</strong></p>
-<pre class="r"><code>mean(herbivores_data$mean.hra.m2, na.rm = T)</code></pre>
-<pre><code>## [1] 34137012</code></pre>
-<pre class="r"><code>mean(carnivores_data$mean.hra.m2, na.rm = T)</code></pre>
-<pre><code>## [1] 13039918</code></pre>
-<p><em>Herbivores have a larger, on average
-<code>mean.hra.m2</code></em></p>
-<p><strong>9. Make a new dataframe <code>owls</code> that is limited to
-the mean mass, log10 mass, family, genus, and species of owls in the
-database. Which is the smallest owl? What is its common name? Do a
-little bit of searching online to see what you can learn about this
-species and provide a link below</strong></p>
-<pre class="r"><code>owls &lt;- filter(homerange, order == &quot;strigiformes&quot;)
-owls1 &lt;- select(owls, &quot;mean.mass.g&quot;,&quot;log10.mass&quot;, &quot;family&quot;, &quot;genus&quot;, &quot;species&quot;) %&gt;% 
-arrange(mean.mass.g)
-head(owls1)</code></pre>
-<pre><code>##   mean.mass.g log10.mass    family      genus    species
-## 1       61.32   1.787602 strigidae glaucidium passerinum
-## 2      119.00   2.075547 strigidae   aegolius   funereus
-## 3      156.50   2.194514 strigidae     athene     noctua
-## 4      252.00   2.401401 strigidae       asio       otus
-## 5      285.00   2.454845 tytonidae       tyto       alba
-## 6      519.00   2.715167 strigidae      strix      aluco</code></pre>
-<p><em>Glaucidium passerinum is the smallest at 61.32g. Common name is
-Eurasian pygmy owl. <a href="https://animaldiversity.org/accounts/Glaucidium_passerinum/" class="uri">https://animaldiversity.org/accounts/Glaucidium_passerinum/</a></em></p>
-<p><strong>10. As measured by the data, which bird species has the
-largest homerange? Show all of your work, please. Look this species up
-online and tell me about it!</strong>.</p>
-<pre class="r"><code>birds &lt;- filter(homerange, class == &quot;aves&quot;) %&gt;% 
-arrange(desc(mean.hra.m2))
-head(birds)</code></pre>
-<pre><code>##   taxon            common.name class            order        family      genus
-## 1 birds               caracara  aves    falconiformes    falconidae   caracara
-## 2 birds      Montagu&#39;s harrier  aves    falconiformes  accipitridae     circus
-## 3 birds       peregrine falcon  aves    falconiformes    falconidae      falco
-## 4 birds           booted eagle  aves  accipitriformes  accipitridae hieraaetus
-## 5 birds                ostrich  aves struthioniformes struthionidae   struthio
-## 6 birds short-toed snake eagle  aves  accipitriformes  accipitridae  circaetus
-##      species primarymethod    N mean.mass.g log10.mass
-## 1   cheriway     telemetry   26      1125.0   3.051153
-## 2   pygargus    telemetry* &lt;NA&gt;       315.5   2.498999
-## 3 peregrinus    telemetry* &lt;NA&gt;       781.5   2.892929
-## 4   pennatus     telemetry    4       975.0   2.989005
-## 5    camelus     telemetry    1     88250.0   4.945715
-## 6   gallicus    telemetry* &lt;NA&gt;      1699.0   3.230193
-##   alternative.mass.reference mean.hra.m2 log10.hra
-## 1                       &lt;NA&gt;   241000000  8.382017
-## 2                       &lt;NA&gt;   200980000  8.303153
-## 3                       &lt;NA&gt;   153860000  8.187126
-## 4                       &lt;NA&gt;   117300000  8.069298
-## 5                       &lt;NA&gt;    84300000  7.925828
-## 6                       &lt;NA&gt;    78500000  7.894870
-##                                                                                                                                                                                                   hra.reference
-## 1                                                Dwyer JF, Fraser JD, Morrison JL. 2013. Range sizes and habitat use of non-breeding Crested Caracaras in Florida. Journal of Field Ornithology 84(3), 223-233.
-## 2                        Ottaviani, D., S. C. Cairns, M. Oliverio, and L. Boitani. 2006. Body mass as a predictive variable of home-range size among Italian mammals and birds. Journal of Zoology 269:317-330.
-## 3                        Ottaviani, D., S. C. Cairns, M. Oliverio, and L. Boitani. 2006. Body mass as a predictive variable of home-range size among Italian mammals and birds. Journal of Zoology 269:317-330.
-## 4    Martinez JE, Pagan I, Palazon JA, Calvo JF. 2007. Habitat use of booted eagles (Hieraaetus pennatus) in a Special Protection Area: implications for conservation. Biodiversity Conservation 16, 3481-3488.
-## 5 Williams JB, Siegfried WR, Milton SJ, Adams NJ, Dean WRT, du Plessis MA, Jackson S. 1993. Field Metabolism, Water Requirements, and Foraging Behavior of Wild Ostriches in the Namib. Ecology 74(2), 390-404.
-## 6                        Ottaviani, D., S. C. Cairns, M. Oliverio, and L. Boitani. 2006. Body mass as a predictive variable of home-range size among Italian mammals and birds. Journal of Zoology 269:317-330.
-##         realm thermoregulation locomotion trophic.guild dimension preymass
-## 1 terrestrial        endotherm    walking     carnivore        2D       NA
-## 2 terrestrial        endotherm     flying     carnivore        3D       NA
-## 3 terrestrial        endotherm     flying     carnivore        3D   165.90
-## 4 terrestrial        endotherm     flying     carnivore        3D   365.17
-## 5 terrestrial        endotherm    walking     herbivore        2D       NA
-## 6 terrestrial        endotherm     flying     carnivore        3D   164.95
-##   log10.preymass  PPMR
-## 1             NA    NA
-## 2             NA    NA
-## 3       2.219846  4.71
-## 4       2.562495  2.56
-## 5             NA    NA
-## 6       2.217352 10.30
-##                                                                                                                                                                                                                                    prey.size.reference
-## 1                                                                                                                                                                                                                                                 &lt;NA&gt;
-## 2                                                                                                                                                                                                                                                 &lt;NA&gt;
-## 3 Jaksic FM, Delibes M.1987. A Comparative Analysis of Food-Niche Relationships and Trophic Guild Structure in TwoAssemblages of Vertebrate Predators Differing in Species Richness: Causes, Correlations, and Consequences. Oecologia 71(3), 461-472.
-## 4 Jaksic FM, Delibes M.1987. A Comparative Analysis of Food-Niche Relationships and Trophic Guild Structure in TwoAssemblages of Vertebrate Predators Differing in Species Richness: Causes, Correlations, and Consequences. Oecologia 71(3), 461-472.
-## 5                                                                                                                                                                                                                                                 &lt;NA&gt;
-## 6 Jaksic FM, Delibes M.1987. A Comparative Analysis of Food-Niche Relationships and Trophic Guild Structure in TwoAssemblages of Vertebrate Predators Differing in Species Richness: Causes, Correlations, and Consequences. Oecologia 71(3), 461-472.</code></pre>
-<p><em>The bird species with the largest homerange is the Caracara
-cheriway (Northern crested caracara) at 241000000m2. <a href="https://animaldiversity.org/accounts/Caracara_cheriway/" class="uri">https://animaldiversity.org/accounts/Caracara_cheriway/</a></em></p>
-</div>
-<div id="push-your-final-code-to-github" class="section level2">
-<h2>Push your final code to GitHub!</h2>
-<p>Please be sure that you check the <code>keep md</code> file in the
-knit preferences.</p>
 </div>
 
 

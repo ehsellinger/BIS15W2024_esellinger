@@ -12,7 +12,7 @@ output:
 
 ## Learning Goals
 *At the end of this exercise, you will be able to:*    
-1. Use `filter()` to extract variables of interest.  
+1. Use `filter()` to extract variables of interest.   
 2. Use `filter()` to extract variables of interest under multiple conditions.  
 
 ## Load the tidyverse

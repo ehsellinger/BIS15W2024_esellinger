@@ -96,7 +96,7 @@ sleep_small_mammals # sleep 11.79 hours/day
 
 10. Which animal is the sleepiest among the entire dataframe?
 ```{r}
-max(sleep$sleep_total)
+max(sleep$sleep_total) 
 ```
 **The sleepiest mammal among the entire data frame is the little brown bat which sleeps 19.9 hours per day. I know this because I found the max value in the sleep_total column using 'max(sleep$sleep_total)', opened the sleep dataframe, and then searched for the 19.9 value to see which animal it was from. I know it's hours/day because in the help section of the sleep dataframe, R lists out the units for each variable.**  
 

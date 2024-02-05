@@ -93,7 +93,8 @@ count(homerange, trophic.guild)
 ```
 
 ```{r}
-homerange %>% group_by(trophic.guild) %>% summarize(n_species=n_distinct(species)) # how many carnivores/herbivores for each specific epithet
+homerange %>% group_by(trophic.guild) %>% summarize(n_species=n_distinct(species)) 
+# how many carnivores/herbivores for each specific epithet
 ```
 
 
