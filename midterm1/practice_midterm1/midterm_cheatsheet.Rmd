@@ -54,9 +54,15 @@ knitr::opts_chunk$set(echo = TRUE)
 - intro: midterm review
 - lab 8_1: across review! helpful 'across()' functions
 - lab 8_2: Define `NA` and describe how they are treated in R, Produce summaries of the number of NA's in a data set, Replace values with `NA` in a data set as appropriate.  
-- hw7:
+- hw7: using aminota and amphibio data to find NAs and transform them
 
 **Lab 9**
+- intro: going over final project questions
+- lab 9_2: Explain the difference between tidy and messy data. Evaluate a data set as tidy or messy. Use the `pivot_longer()` function of `tidyr` to transform data from wide to long format. Use `separate()` to split observations within a column.  
+- lab 9_2: Explain the difference between tidy and messy data. Evaluate a data set as tidy or untidy. Use the `pivot_wider()` function of `tidyr` to transform data from long to wide format. 
+- hw8: 
+
+**Lab 10**
 - 
 
 
