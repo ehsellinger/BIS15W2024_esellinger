@@ -60,10 +60,13 @@ knitr::opts_chunk$set(echo = TRUE)
 - intro: going over final project questions
 - lab 9_2: Explain the difference between tidy and messy data. Evaluate a data set as tidy or messy. Use the `pivot_longer()` function of `tidyr` to transform data from wide to long format. Use `separate()` to split observations within a column.  
 - lab 9_2: Explain the difference between tidy and messy data. Evaluate a data set as tidy or untidy. Use the `pivot_wider()` function of `tidyr` to transform data from long to wide format. 
-- hw8: 
+- hw8: practice transforming between long and wide format data
 
 **Lab 10**
-- 
+- intro: long format review
+- lab 10_1: Understand and apply the syntax of building plots using `ggplot2`. Build a boxplot using `ggplot2`. Build a scatterplot using `ggplot2`. Build a barplot using `ggplot2` and show the difference between `stat=count` and `stat=identity`.
+- lab 10_2: Produce boxplots using `ggplot.` Customize labels on axes using `labs` and `themes`. Use `color`, `fill`, and `group` to customize plots and improve overall aesthetics. 
+- hw9: 
 
 
 **Quick Code:**  
