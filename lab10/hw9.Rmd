@@ -63,7 +63,7 @@ colleges %>%
 ```
 
 3. Based on your answer to #2, make a plot that shows the number of colleges in the top 10 cities.
-```{r}
+```{r dpi = 250, out.width = "75%"}
 colleges %>% 
   group_by(city) %>% 
   summarise(n_colleges = n_distinct(instnm)) %>% 
@@ -85,7 +85,7 @@ colleges %>%
 #### Claremont has the highest average cost and is located in California
 
 5. Based on your answer to #4, make a plot that compares the cost of the individual colleges in the most expensive city. Bonus! Add UC Davis here to see how it compares :>).
-```{r}
+```{r dpi = 250, out.width = "75%"}
 colleges %>% 
   filter((costt4_a != "NA")) %>%
   filter(city == "Claremont" | city == "Davis") %>% 
@@ -95,7 +95,7 @@ colleges %>%
 ```
 
 6. The column `ADM_RATE` is the admissions rate by college and `C150_4_POOLED` is the four-year completion rate. Use a scatterplot to show the relationship between these two variables. What do you think this means?
-```{r}
+```{r dpi = 250, out.width = "75%"}
 colleges %>% 
   ggplot(aes(x = adm_rate, y = c150_4_pooled))+
   geom_point()+
@@ -105,7 +105,7 @@ colleges %>%
 #### There seems to be a negative/inverse relationship between admissions rate and four-year completion rate meaning that the lower the admissions rate, the higher the four-year completion rate.
 
 7. Is there a relationship between cost and four-year completion rate? (You don't need to do the stats, just produce a plot). What do you think this means?
-```{r}
+```{r dpi = 250, out.width = "75%"}
 colleges %>% 
   ggplot(aes(x = costt4_a, y = c150_4_pooled))+
   geom_point()+
@@ -132,7 +132,7 @@ univ_calif_final %>%
   arrange(desc(adm_rate))
 ```
 
-```{r}
+```{r dpi = 250, out.width = "75%"}
 univ_calif_final %>% 
   ggplot(aes(x = reorder(campus, adm_rate), y = adm_rate)) +
   geom_col()
@@ -147,7 +147,7 @@ univ_calif_final %>%
   arrange(desc(pcip26))
 ```
 
-```{r}
+```{r dpi = 250, out.width = "75%"}
 univ_calif_final %>% 
   ggplot(aes(x = reorder(campus, pcip26), y = pcip26)) +
   geom_col()

@@ -5,7 +5,7 @@ date: "2024-02-15"
 output:
   html_document: 
     theme: spacelab
-    keep_md: yes
+    keep_md: true
 ---
 
 
@@ -137,7 +137,7 @@ colleges %>%
   coord_flip()
 ```
 
-![](hw9_files/figure-html/unnamed-chunk-6-1.png)<!-- -->
+<img src="hw9_files/figure-html/unnamed-chunk-6-1.png" width="75%" />
 
 4. The column `COSTT4_A` is the annual cost of each institution. Which city has the highest average cost? Where is it located?
 
@@ -178,7 +178,7 @@ colleges %>%
   coord_flip()
 ```
 
-![](hw9_files/figure-html/unnamed-chunk-8-1.png)<!-- -->
+<img src="hw9_files/figure-html/unnamed-chunk-8-1.png" width="75%" />
 
 6. The column `ADM_RATE` is the admissions rate by college and `C150_4_POOLED` is the four-year completion rate. Use a scatterplot to show the relationship between these two variables. What do you think this means?
 
@@ -201,7 +201,7 @@ colleges %>%
 ## Warning: Removed 251 rows containing missing values (`geom_point()`).
 ```
 
-![](hw9_files/figure-html/unnamed-chunk-9-1.png)<!-- -->
+<img src="hw9_files/figure-html/unnamed-chunk-9-1.png" width="75%" />
 
 #### There seems to be a negative/inverse relationship between admissions rate and four-year completion rate meaning that the lower the admissions rate, the higher the four-year completion rate.
 
@@ -226,7 +226,7 @@ colleges %>%
 ## Warning: Removed 225 rows containing missing values (`geom_point()`).
 ```
 
-![](hw9_files/figure-html/unnamed-chunk-10-1.png)<!-- -->
+<img src="hw9_files/figure-html/unnamed-chunk-10-1.png" width="75%" />
 
 #### There seems to be a positive/direct relationship between cost and four-year completion rate where the higher the cost, the greater the four-year completion rate.
 
@@ -271,7 +271,7 @@ univ_calif_final %>%
   geom_col()
 ```
 
-![](hw9_files/figure-html/unnamed-chunk-13-1.png)<!-- -->
+<img src="hw9_files/figure-html/unnamed-chunk-13-1.png" width="75%" />
 
 ### Berkeley has the lowest admissions rate at 16.93% and Riverside has the highest admissions rate at 66.34%.
 
@@ -304,7 +304,7 @@ univ_calif_final %>%
   geom_col()
 ```
 
-![](hw9_files/figure-html/unnamed-chunk-15-1.png)<!-- -->
+<img src="hw9_files/figure-html/unnamed-chunk-15-1.png" width="75%" />
 
 #### If you wanted to get a degree in biological or biomedical sciences, San Diego confers the majority of these degrees at 21.65%.
 
