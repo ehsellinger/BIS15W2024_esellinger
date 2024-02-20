@@ -66,7 +66,13 @@ knitr::opts_chunk$set(echo = TRUE)
 - intro: long format review
 - lab 10_1: Understand and apply the syntax of building plots using `ggplot2`. Build a boxplot using `ggplot2`. Build a scatterplot using `ggplot2`. Build a barplot using `ggplot2` and show the difference between `stat=count` and `stat=identity`.
 - lab 10_2: Produce boxplots using `ggplot.` Customize labels on axes using `labs` and `themes`. Use `color`, `fill`, and `group` to customize plots and improve overall aesthetics. 
-- hw9: 
+- hw9: plotting practice with colleges stats data
+
+**Lab 11**
+- intro: boxplot practice
+- lab 11_1: Produce box plots using `ggplot.` Customize labels on axes using `labs` and `themes`. Use `color`, `fill`, and `group` to customize plots and improve aesthetics.  
+- lab 11_2: Build stacked bar plots of categorical variables. Build side-by-side barplots using `position= "dodge"`.  
+- hw 10: 
 
 
 **Quick Code:**  
