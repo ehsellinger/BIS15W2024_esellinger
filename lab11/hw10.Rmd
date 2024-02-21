@@ -163,6 +163,8 @@ deserts %>%
 ```{r dpi = 250, out.width = "75%"}
 deserts %>% 
   filter(sex != "NA") %>% 
+  filter(weight != "NA") %>% 
+  filter(hindfoot_length != "NA") %>% 
   ggplot(aes(x = sex, y = weight)) +
   geom_col(aes(color = hindfoot_length)) +
   scale_color_viridis(name = "Hindfoot Length (cm)")+
