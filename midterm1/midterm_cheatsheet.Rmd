@@ -72,7 +72,10 @@ knitr::opts_chunk$set(echo = TRUE)
 - intro: boxplot practice
 - lab 11_1: Produce box plots using `ggplot.` Customize labels on axes using `labs` and `themes`. Use `color`, `fill`, and `group` to customize plots and improve aesthetics.  
 - lab 11_2: Build stacked bar plots of categorical variables. Build side-by-side barplots using `position= "dodge"`.  
-- hw 10: 
+- hw 10: plotting practice with desert species data (labels and colors)
+
+** Lab 12**
+- intro: 
 
 
 **Quick Code:**  
