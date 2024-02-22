@@ -50,32 +50,34 @@ knitr::opts_chunk$set(echo = TRUE)
 - lab 7_2: Produce clear, concise summaries using a variety of functions in `dplyr` and  `janitor.`, Use the `across()` operator to produce summaries across multiple variables. Using `group_by()` for multiple columns. Using `count()`.
 - hw6: When to use `group_by()` vs `count()`. Lots of practice
 
-**Lab 8**
-- intro: midterm review
-- lab 8_1: across review! helpful 'across()' functions
-- lab 8_2: Define `NA` and describe how they are treated in R, Produce summaries of the number of NA's in a data set, Replace values with `NA` in a data set as appropriate.  
-- hw7: using aminota and amphibio data to find NAs and transform them
+**Lab 8** 
+- intro: midterm review. 
+- lab 8_1: across review! helpful 'across()' functions. 
+- lab 8_2: Define `NA` and describe how they are treated in R, Produce summaries of the number of NA's in a data set, Replace values with `NA` in a data set as appropriate.   
+- hw7: using aminota and amphibio data to find NAs and transform them. 
 
-**Lab 9**
-- intro: going over final project questions
-- lab 9_2: Explain the difference between tidy and messy data. Evaluate a data set as tidy or messy. Use the `pivot_longer()` function of `tidyr` to transform data from wide to long format. Use `separate()` to split observations within a column.  
-- lab 9_2: Explain the difference between tidy and messy data. Evaluate a data set as tidy or untidy. Use the `pivot_wider()` function of `tidyr` to transform data from long to wide format. 
-- hw8: practice transforming between long and wide format data
+**Lab 9**  
+- intro: going over final project questions. 
+- lab 9_1: Explain the difference between tidy and messy data. Evaluate a data set as tidy or messy. Use the `pivot_longer()` function of `tidyr` to transform data from wide to long format. Use `separate()` to split observations within a column.  
+- lab 9_2: Explain the difference between tidy and messy data. Evaluate a data set as tidy or untidy. Use the `pivot_wider()` function of `tidyr` to transform data from long to wide format.  
+- hw8: practice transforming between long and wide format data. 
 
-**Lab 10**
-- intro: long format review
-- lab 10_1: Understand and apply the syntax of building plots using `ggplot2`. Build a boxplot using `ggplot2`. Build a scatterplot using `ggplot2`. Build a barplot using `ggplot2` and show the difference between `stat=count` and `stat=identity`.
-- lab 10_2: Produce boxplots using `ggplot.` Customize labels on axes using `labs` and `themes`. Use `color`, `fill`, and `group` to customize plots and improve overall aesthetics. 
-- hw9: plotting practice with colleges stats data
+**Lab 10**  
+- intro: long format review. 
+- lab 10_1: Understand and apply the syntax of building plots using `ggplot2`. Build a boxplot using `ggplot2`. Build a scatterplot using `ggplot2`. Build a barplot using `ggplot2` and show the difference between `stat=count` and `stat=identity`.  
+- lab 10_2: Produce boxplots using `ggplot.` Customize labels on axes using `labs` and `themes`. Use `color`, `fill`, and `group` to customize plots and improve overall aesthetics.   
+- hw9: plotting practice with colleges stats data. 
 
-**Lab 11**
-- intro: boxplot practice
+**Lab 11**. 
+- intro: boxplot practice. 
 - lab 11_1: Produce box plots using `ggplot.` Customize labels on axes using `labs` and `themes`. Use `color`, `fill`, and `group` to customize plots and improve aesthetics.  
 - lab 11_2: Build stacked bar plots of categorical variables. Build side-by-side barplots using `position= "dodge"`.  
-- hw 10: plotting practice with desert species data (labels and colors)
+- hw 10: plotting practice with desert species data (labels and colors). 
 
-** Lab 12**
-- intro: 
+** Lab 12**. 
+- intro: `mutate` and `geom_boxplot` practice with heartrate data. 
+- lab 12_1: Build histograms and density plots. Adjust colors using R's built-in color options. Create new categories with `case_when()` and use those categories to build plots. Build line plots.  
+- lab 12_2: 
 
 
 **Quick Code:**  
@@ -97,6 +99,10 @@ knitr::opts_chunk$set(echo = TRUE)
 # 'across()' function: summarize(across(c(column1, column2, column3), function))
 ```
 
+**Plotting Quick Code:**
+```{r}
+# opacity of color: alpha = 0-1 (use in aes)
+```
 
 
 

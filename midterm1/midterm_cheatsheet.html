@@ -429,10 +429,50 @@ in <code>dplyr</code> and <code>janitor.</code>, Use the
 variables. Using <code>group_by()</code> for multiple columns. Using
 <code>count()</code>. - hw6: When to use <code>group_by()</code> vs
 <code>count()</code>. Lots of practice</p>
-<p><strong>Lab 8</strong> - intro: midterm review - lab 8_1: across
-review! helpful ‘across()’ functions - lab 8_2 - hw7:</p>
-<div id="lab-9" class="section level2">
-<h2><strong>Lab 9</strong></h2>
+<p><strong>Lab 8</strong> - intro: midterm review. - lab 8_1: across
+review! helpful ‘across()’ functions. - lab 8_2: Define <code>NA</code>
+and describe how they are treated in R, Produce summaries of the number
+of NA’s in a data set, Replace values with <code>NA</code> in a data set
+as appropriate.<br />
+- hw7: using aminota and amphibio data to find NAs and transform
+them.</p>
+<p><strong>Lab 9</strong><br />
+- intro: going over final project questions. - lab 9_1: Explain the
+difference between tidy and messy data. Evaluate a data set as tidy or
+messy. Use the <code>pivot_longer()</code> function of
+<code>tidyr</code> to transform data from wide to long format. Use
+<code>separate()</code> to split observations within a column.<br />
+- lab 9_2: Explain the difference between tidy and messy data. Evaluate
+a data set as tidy or untidy. Use the <code>pivot_wider()</code>
+function of <code>tidyr</code> to transform data from long to wide
+format.<br />
+- hw8: practice transforming between long and wide format data.</p>
+<p><strong>Lab 10</strong><br />
+- intro: long format review. - lab 10_1: Understand and apply the syntax
+of building plots using <code>ggplot2</code>. Build a boxplot using
+<code>ggplot2</code>. Build a scatterplot using <code>ggplot2</code>.
+Build a barplot using <code>ggplot2</code> and show the difference
+between <code>stat=count</code> and <code>stat=identity</code>.<br />
+- lab 10_2: Produce boxplots using <code>ggplot.</code> Customize labels
+on axes using <code>labs</code> and <code>themes</code>. Use
+<code>color</code>, <code>fill</code>, and <code>group</code> to
+customize plots and improve overall aesthetics.<br />
+- hw9: plotting practice with colleges stats data.</p>
+<p><strong>Lab 11</strong>. - intro: boxplot practice. - lab 11_1:
+Produce box plots using <code>ggplot.</code> Customize labels on axes
+using <code>labs</code> and <code>themes</code>. Use <code>color</code>,
+<code>fill</code>, and <code>group</code> to customize plots and improve
+aesthetics.<br />
+- lab 11_2: Build stacked bar plots of categorical variables. Build
+side-by-side barplots using <code>position= &quot;dodge&quot;</code>.<br />
+- hw 10: plotting practice with desert species data (labels and
+colors).</p>
+<p>** Lab 12**. - intro: <code>mutate</code> and
+<code>geom_boxplot</code> practice with heartrate data. - lab 12_1:
+Build histograms and density plots. Adjust colors using R’s built-in
+color options. Create new categories with <code>case_when()</code> and
+use those categories to build plots. Build line plots.<br />
+- lab 12_2:</p>
 <p><strong>Quick Code:</strong></p>
 <pre class="r"><code># remove NAs: na.rm = T
 # change column class: data$column &lt;- as.factor(data$column)
@@ -449,7 +489,8 @@ review! helpful ‘across()’ functions - lab 8_2 - hw7:</p>
 # Determine number of observations in column: count()
 # Look at percentages of values in column: tabyl(data$column) -- similar to table()
 # &#39;across()&#39; function: summarize(across(c(column1, column2, column3), function))</code></pre>
-</div>
+<p><strong>Plotting Quick Code:</strong></p>
+<pre class="r"><code># opacity of color: alpha = 0-1 (use in aes)</code></pre>
 
 
 
