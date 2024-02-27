@@ -214,7 +214,7 @@ back to results of `facet_wrap`
 ```{r}
 homerange %>% 
   ggplot(aes(x=taxon, y=log10.mass))+
-  facet_grid(~.trophic.guild) +
+  facet_grid(.~trophic.guild) +
   geom_boxplot()+
   theme(axis.text.x = element_text(angle = 60, hjust=1))
 ```

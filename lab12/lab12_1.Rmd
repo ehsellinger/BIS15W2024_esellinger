@@ -233,11 +233,11 @@ homerange %>%
 1. Use case_when() to make a new column `range_category` that breaks down `log10.hra` into very small, small, medium, and large classes based on quartile.
 ```{r}
 # install.packages("gtools")
-library("gtools")
 ```
 
 ```{r}
-quartiles <-  quantcut(homerange$log.10hra)
+library(gtools)
+quartiles <- quantcut(homerange$log10.hra)
 table(quartiles)
 ```
 ```{r}
