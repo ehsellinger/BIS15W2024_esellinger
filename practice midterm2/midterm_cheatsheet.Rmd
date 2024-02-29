@@ -78,8 +78,12 @@ knitr::opts_chunk$set(echo = TRUE)
 - intro: `mutate` and `geom_boxplot` practice with heartrate data. 
 - lab 12_1: Build histograms and density plots. Adjust colors using R's built-in color options. Create new categories with `case_when()` and use those categories to build plots. Build line plots.  
 - lab 12_2: Adjust the aesthetics of plots in ggplot using `themes`, `RColorBrewer`, and `paletteer.` Use faceting to produce multi-panel plots.   
-- hw 11: Tons of plotting practice with gapminder data (great plot examples!)
+- hw 11: Tons of plotting practice with gapminder data (great plot examples!)  
 
+**Lab 13:**  
+- intro: midterm review and group work  
+- lab 13_1: List and join multiple files from a directory.Format dates in a data frame. 
+- lab 13_2: 
 
 **Quick Code:**  
 ```{r}
@@ -100,6 +104,7 @@ knitr::opts_chunk$set(echo = TRUE)
 # 'across()' function: summarize(across(c(column1, column2, column3), function))
 # Summarize NAs: data %>% map_df(~ sum(is.na(.))) OR data %>% naniar::miss_var_summary()
 # TOP mins and maxes in data: data %>% slice_max(column, n=5) or data %>% top_n(5, column)
+# joining syntax: join_type(firstTable, secondTable, by=columnTojoinOn)
 ```
 
 **Plotting Quick Code:**
