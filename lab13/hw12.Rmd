@@ -51,18 +51,18 @@ bbox <- make_bbox(long, lat, f = 0.03)
 
 3. Load a map from `stamen` in a terrain style projection and display the map.  
 ```{r}
-register_stadiamaps("e77f55a8-a371-44cd-a7dd-6384b4586d64", write = FALSE)
+register_stadiamaps("ca47a687-603d-4e29-be60-6e69cdcb97ae", write = FALSE)
 ```
 
 ```{r}
-map1 <- get_stadiamap(bbox, maptype = "stamen_terrain", zoom=6)
+map1 <- get_stadiamap(bbox, maptype = "stamen_terrain", zoom=7)
 ggmap(map1)
 ```
 
 4. Build a final map that overlays the recorded observations of grizzly bears in Alaska.  
 ```{r}
 ggmap(map1) + 
-  geom_point(data = grizzly, aes(longitude, latitude), size=0.4) +
+  geom_point(data = grizzly, aes(longitude, latitude), size=.8, color = "darkred") +
   labs(x= "Longitude", y= "Latitude", title="Grizzly Bear Sightings")
 ```
 
@@ -73,15 +73,18 @@ Let's switch to the wolves data. Brandell, Ellen E (2021), Serological dataset a
 wolves <- read_csv("data/wolves_data/wolves_dataset.csv")
 ```
 
-6. How many distinct wolf populations are included in this study? Mae a new object that restricts the data to the wolf populations in the lower 48 US states.  
+6. How many distinct wolf populations are included in this study? Make a new object that restricts the data to the wolf populations in the lower 48 US states.  
 ```{r}
 wolves %>% 
-  
+  group_by(pop) %>% 
+  summarise(n_individuals = n())
 ```
+
+#### There are 17 distinct wolf populations  
 
 ```{r}
 wolves_restricted <- wolves %>% 
-  
+  filter(pop == "MT" | pop == "MI" | pop == "GTNP" | pop == "YNP" | pop == "SNF")
 ```
 
 7. Use the range of the latitude and longitude to build an appropriate bounding box for your map. 
@@ -92,14 +95,14 @@ wolves_restricted %>%
 ```
 
 ```{r}
-lat1 <- c(32.59, 41.56)
-long1 <- c(-124.7, -117.1)
-bbox1 <- make_bbox(long, lat, f = 0.03)
+lat1 <- c(43.5, 48)
+long1 <- c(-110.99, -86.82)
+bbox1 <- make_bbox(long1, lat1, f = 0.03)
 ```
 
 8.  Load a map from `stamen` in a `terrain-lines` projection and display the map.  
 ```{r}
-map2 <- get_stadiamap(bbox, maptype = "stamen_terrain_lines", zoom=7)
+map2 <- get_stadiamap(bbox1, maptype = "stamen_terrain_lines", zoom=7)
 ggmap(map2)
 ```
 
@@ -113,8 +116,11 @@ ggmap(map2) +
 10. Use the map from #9 above, but add some aesthetics. Try to `fill` and `color` by population.  
 ```{r}
 ggmap(map2) + 
-  geom_point(data = wolves_restricted, aes(long, lat), size=0.4, fill = population, color = population) +
-  labs(x= "Longitude", y= "Latitude", title = "Wolf Populations")
+  geom_point(data = wolves_restricted, aes(long, lat, color = pop), size=4) +
+  labs(x= "Longitude", 
+       y= "Latitude", 
+       title = "Wolf Populations",
+       color = "Population")
 ```
 
 ## Push your final code to GitHub!
