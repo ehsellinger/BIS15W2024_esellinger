@@ -76,10 +76,11 @@ blood_count %>%
   ggplot(aes(x = Test, y = Values, fill = gender)) +
   geom_boxplot() + 
   scale_y_log10() + #make y axis on a log scale
-  facet_grid(~ Test, scales = "free") 
+  facet_wrap(~ Test, scales = "free") 
   labs(title = "Boxplot of Blood Count Tests",
        x = "Test",
-       y = "Values")
+       y = "Values",
+       fill = "Gender")
 ```
 
 
