@@ -118,6 +118,8 @@ knitr::opts_chunk$set(echo = TRUE)
 # create new bins using case_when(): data %>% mutate(mass_category = case_when(log10.mass <= 1.75 ~ "small", > 1.75 & log10.mass <= 2.75 ~ "medium", log10.mass > 2.275 ~ "large"))
 # have data side by side on bar plot: geom_bar(position = "dodge")
 # see lab 12_1 for quartile cutting using 'gtools'
-# edit axis tilt: theme(axis.text.x = element_text(angle = 45, hjust=1)) +
+# edit axis tilt: theme(axis.text.x = element_text(angle = 45, hjust=1))
+# make y axis on a log scale: scale_y_log10()
+# make plots more clear when knitting: ```{r dpi = 250, out.width = "75%"}
 ```
 
