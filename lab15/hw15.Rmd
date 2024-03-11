@@ -69,7 +69,7 @@ blood_count %>%
 ```
 
 
-6. This code chunk had a typo in the "pivot_wider" function. It was changed from [] to () to properly select the columns. It also had a missing comma after the "facet" function.
+6. This code chunk had a typo in the "pivot_wider" function. It was changed from [] to () to properly select the columns. It also had a missing comma after the "facet" function.  
 ```{r dpi = 250, out.width = "75%"}
 blood_count %>%
   pivot_longer(cols = (3:9), names_to = "Test", values_to = "Values") %>%
